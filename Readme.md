@@ -23,6 +23,7 @@ This repository contains structured course notes for 7th semester subjects, writ
 ├── Energy-Environment-and-Society/
 ├── ICT-Project-Management/
 ├── Organization-and-Management/
+├── Data-Mining
 ├── script.py
 └── Readme.md
 ```
