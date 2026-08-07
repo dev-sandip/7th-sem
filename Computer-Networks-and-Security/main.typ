@@ -19,12 +19,12 @@
   date: datetime(year: 2026, month: 7, day: 1),
   abstract: [Hands-on notes prepared while studying the Computer Networks and Security course at IOE Purwanchal Campus.],
 
-  figure-index: (enabled: true),
-  table-index: (enabled: true),
+  figure-index: (enabled: false),
+  table-index: (enabled: false),
   listing-index: (enabled: true),
 )
 
 
-// #include "chapter-1/chapter-1.typ"
+#include "chapter-1/chapter-1.typ"
 #include "chapter-2/chapter-2.typ"
 #include "chapter-3/chapter-3.typ"

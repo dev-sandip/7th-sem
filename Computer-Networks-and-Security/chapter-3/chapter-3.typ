@@ -328,3 +328,137 @@ Slotted ALOHA was introduced to overcome the high collision probability of Pure 
 
 
 === CSMA(Carrier Sense Multiple Access)
+CSMA is a medium access control mechanism that improves upon ALOHA by allowing stations to sense the channel before transmitting. If the channel is busy, the station waits until it becomes idle. It ensures fewer collision as the station checks the channel before transmitting. CSMA has several variants, including 1-persistent, non-persistent, and p-persistent CSMA, each with different strategies for handling channel access and collisions.
++ *Non Persistent CSMA:* The station that has frame to send senses the channel and if it is busy, it waits for a random time before sensing again. This reduces the chance of collision but may lead to longer delays.
++ *1-Persistent CSMA:* The station that has frame to send senses the channel and if it is busy, it keeps sensing until the channel becomes idle. When the channel is idle, it transmits immediately. This increases the chance of collision but reduces delay.
++ *P-Persistent CSMA:* This is used in slotted channels. The station that has frame to send senses the channel and if it is busy, it waits for the next time slot and transmits with a probability of p. If it does not transmit, it waits for the next time slot and repeats the process. This balances the trade-off between collision probability and delay.
+
+=== CSMA/CD (Carrier Sense Multiple Access with Collision Detection)
+`CSMA/CD` is widely used MAC protocol standardzied in IEEE 802.3(Ethernet). It is an enhancement of CSMA that allows stations to detect collisions while transmitting. If a collision is detected, the station stops transmitting and sends a jamming signal to notify other stations of the collision. After a random backoff period, the station attempts to retransmit.
+=== CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)
+`CSMA/CA` is a network multiple access method in which carrier sensing is used, but nodes attempt to avoid collisions by transmitting only when the channel is sensed to be idle . Prior to transmitting , a node first listenes to the medium to determine if another node is transmitting. If the channel is idle, the node transmits its data. If the channel is busy, the node waits for a random backoff period before trying again. This method is commonly used in wireless networks (e.g., Wi-Fi) where collision detection is difficult due to the hidden node problem.
+
+Collision are avoided in `CSMA/CA` by the use of follwoing three strategies:
++ *Interframe Spacing:* After a transmission, the sender waits for a specific time interval (interframe space) before attempting to transmit again. This allows other stations to access the channel and reduces the likelihood of collisions.
++ *Acknowledgment *: After successfully receiving a frame, the receiver sends an acknowledgment (ACK) back to the sender. If the sender does not receive an ACK within a certain time frame, it assumes a collision occurred and will attempt to retransmit after a random backoff period.
++ *Contention Window:* Each station maintains a contention window, which is a range of time slots during which it can attempt to transmit. If the channel is busy, the station randomly selects a time slot within the contention window to wait before trying again. This randomization helps to reduce the chances of multiple stations colliding when they attempt to access the channel simultaneously.
+
+
+== IEEE 802 Standards
+
+The *IEEE (Institute of Electrical and Electronics Engineers)* 802 family defines Physical and Data Link Layer specifications for Local Area Networks (LANs) and Metropolitan Area Networks (MANs). The Data Link Layer is divided into two sublayers: *Logical Link Control (LLC)* and *Medium Access Control (MAC)*.
+
+=== Key IEEE 802 Standards
+
++ *IEEE 802.1 (Network Management & Bridging):* Defines system architecture, LAN bridging, network management, and Virtual LANs (VLANs / 802.1Q).
++ *IEEE 802.2 (Logical Link Control - LLC):* Specifies the upper Data Link sublayer, providing a uniform interface for upper-layer protocols along with flow and error control.
++ *IEEE 802.3 (Ethernet):* Defines specifications for wired Ethernet networks using the CSMA/CD access method.
+
+  #figure(
+    table(
+      columns: (1fr, 1fr, 1.2fr, 1.2fr, 1.2fr, 2fr, 1fr),
+      align: center + horizon,
+      fill: (col, row) => if row == 0 { rgb("eef2f7") } else { none },
+      [*Preamble*], [*SFD*], [*Dest MAC*], [*Src MAC*], [*Type/Length*], [*Data & Padding*], [*FCS*],
+      [7 Bytes], [1 Byte], [6 Bytes], [6 Bytes], [2 Bytes], [46–1500 Bytes], [4 Bytes]
+    ),
+    caption: [IEEE 802.3 Ethernet Frame Structure],
+  )
+
+  *Field Descriptions:*
+  - *Preamble:* 7 bytes of alternating `1`s and `0`s (`10101010`) used for clock synchronization.
+  - *Start Frame Delimiter (SFD):* The byte `10101011` that signals the start of the frame payload.
+  - *Destination & Source MAC Addresses:* 48-bit (6-byte) physical hardware addresses of recipient and sender.
+  - *Type/Length:* Indicates either the network protocol (e.g., IPv4 = `0x0800`) or payload length.
+  - *Data & Padding:* User payload (46 to 1500 bytes). If payload $< 46$ bytes, padding is added to reach the minimum frame size of 64 bytes.
+  - *Frame Check Sequence (FCS):* 4-byte Cyclic Redundancy Check (CRC-32) for error detection.
+
++ *IEEE 802.4 (Token Bus):*
+
+  *IEEE 802.4 Token Bus* combines the physical topology of a coaxial bus with the logical operation of a token ring. Nodes are physically connected to a linear bus, but logically organized into a ring order by MAC addresses.
+
+ 
+
+  *Operation:*
+  + Access to the network is determined by the token , a special frame that is passed from node to node in a well defined seqeunce.
+  + To regulate the sequence in which token is passed the node involved in the token passing from a logical ring.
+  + Each node passes the token to the node with the next lower ring address.
+  + To complete the ring the node with the lowest address passes the token to the node with the highest address.
+  #image("/assets/image-4.png",width: 50%)
+  Caption: [IEEE 802.4 Token Bus Topology]/
+  *Frame Format:*
+
+  #figure(
+    table(
+      columns: (1fr, 1fr, 1fr, 1.2fr, 1.2fr, 2fr, 1fr, 1fr),
+      align: center + horizon,
+      fill: (col, row) => if row == 0 { rgb("eef2f7") } else { none },
+      [*Preamble*], [*SD*], [*Control*], [*Dest MAC*], [*Src MAC*], [*Data Payload*], [*FCS*], [*ED*],
+      [1+ Bytes], [1 Byte], [1 Byte], [2/6 Bytes], [2/6 Bytes], [Variable], [4 Bytes], [1 Byte]
+    ),
+    caption: [IEEE 802.4 Token Bus Frame Format],
+  )
+
+  - *Preamble / Start Delimiter (SD):* Synchronizes receiver and marks frame beginning.
+  - *Frame Control (FC):* Specifies whether the frame is a Data frame or Control frame (e.g., Token pass, Ring maintenance).
+  - *End Delimiter (ED):* Marks the explicit end of the frame.
+
++ *IEEE 802.5 (Token Ring):*
+
+  *IEEE 802.5 Token Ring* uses a token ring technique where a small frame called _*token*_ is passed around the network . The node which passes the token has the right to transmit the data.If a node receiving the token has no information to send, it simply passes the token to the next node int the ring . Each node in the ring can hold the token for a maximum amount of time .
+
+  *Header Format:*
+
+  #figure(
+    table(
+      columns: (1fr, 1fr, 1fr, 1.2fr, 1.2fr, 2fr, 1fr, 1fr, 1fr),
+      align: center + horizon,
+      fill: (col, row) => if row == 0 { rgb("eef2f7") } else { none },
+      [*SD*], [*AC*], [*FC*], [*Dest Address*], [*Src Address*], [*Data Payload*], [*FCS*], [*ED*], [*FS*],
+      [1 Byte], [1 Byte], [1 Byte], [2/6 Bytes], [2/6 Bytes], [Variable], [4 Bytes], [1 Byte], [1 Byte]
+    ),
+    caption: [IEEE 802.5 Token Ring Frame Format],
+  )
+
+  - *Start Delimiter (SD):* Marks the beginning of the frame.
+  - *Access Control (AC):* Contains priority, reservation, and token/data bits to manage access to the ring.
+  - *Frame Control (FC):* Distinguishes between control/management frames and user data frames.
+  - *Destination and Source Addresses:* 48-bit (or 16-bit) MAC addresses of the recipient and sender.
+  - *Data Payload:* Contains the actual data being transmitted.
+  - *Frame Check Sequence (FCS):* 4-byte CRC for error detection.
+  - *End Delimiter (ED):* Marks the end of the frame and contains error-detection indicators.
+  - *Frame Status (FS):* Indicates whether the destination node recognized its address and successfully copied the frame payload.
+
++ *IEEE 802.11 (Wireless LAN):*
+
+ Defines specifications for wireless local area networks (WLANs) using the CSMA/CA access method. It includes various amendments for different frequency bands, data rates, and security protocols (e.g., WPA2, WPA3).
+ 
+ The Standard defines two types:
+  + *Basic Service Set (BSS):* A single access point (AP) and its associated wireless clients form a BSS. Communication occurs through the AP, which manages access to the shared wireless medium.
+  + *Extended Service Set (ESS):* Multiple BSSs interconnected via a distribution system (e.g., wired LAN) form an ESS, allowing seamless roaming for clients across different APs.
+ 
+ *Header Format*:
+ 
+  #figure(
+    table(
+      columns: (1fr, 1fr, 1fr, 1.2fr, 1.2fr, 2fr, 1fr, 1fr, 1fr),
+      align: center + horizon,
+      fill: (col, row) => if row == 0 { rgb("eef2f7") } else { none },
+      [*Frame Control*], [*Duration/ID*], [*Address 1*], [*Address 2*], [*Address 3*], [*Sequence Control*], [*Address 4*], [*Data Payload*],[*FCS*],
+      [2 Bytes], [2 Bytes], [6 Bytes], [6 Bytes], [6 Bytes], [2 Bytes], [6 Bytes], [Variable], [4 Bytes]
+    ),
+    caption: [IEEE 802.11 Wireless Frame Format],
+  )
+  + *Frame Control:* Contains protocol version, type/subtype, and control flags (e.g., To DS, From DS, More Fragments).
+  + *Duration/ID:* Specifies the duration of the frame exchange or contains an association ID.
+  + *Address Fields:* Up to four MAC addresses, depending on the frame type (e.g., source, destination, transmitter, receiver).
+  + *Sequence Control:* Contains fragment number and sequence number for frame reassembly.
+  + *Data Payload:* Contains the actual data being transmitted.
+  + *Frame Check Sequence (FCS):* 4-byte CRC for error detection.
++ *FDDI (Fiber Distributed Data Interface):* 
+  
+  FDDI is similar to Token Ring but uses fiber optic cables for high-speed data transmission.It uses a dual-rin architecture. Traffic on each ring flows in opposite direction (callled _*counter-rotating*_). The dual ring has a primary and secondary ring . The primary ring is used for data transmission during normal operation while secondary ring remains idle. The secondary ring is used for fault tolerance in case of a failure in the primary ring. FDDI uses a token-passing protocol for media access control and supports data rates up to 100 Mbps. It is commonly used in backbone networks and high-performance LANs.
+
+== VLAN
+A *Virtual Local Area Network (VLAN)* is a logical grouping of devices within a LAN that allows them to communicate as if they were on the same physical network, regardless of their actual physical location. VLANs provide segmentation, improved security, and better traffic management.
+
