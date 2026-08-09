@@ -4,7 +4,6 @@
 #set text(
   lang: "en",
   size: 10pt,
- 
 )
 
 
@@ -18,13 +17,14 @@
   author: "Sandip Sapkota",
   date: datetime(year: 2026, month: 7, day: 1),
   abstract: [Hands-on notes prepared while studying the Computer Networks and Security course at IOE Purwanchal Campus.],
-
   figure-index: (enabled: false),
   table-index: (enabled: false),
-  listing-index: (enabled: true),
+  listing-index: (enabled: false), table-of-contents: none
 )
 
 
 #include "chapter-1/chapter-1.typ"
 #include "chapter-2/chapter-2.typ"
 #include "chapter-3/chapter-3.typ"
+#include "chapter-5/chapter-5.typ"
+

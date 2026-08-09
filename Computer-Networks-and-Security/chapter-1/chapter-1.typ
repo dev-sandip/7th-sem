@@ -1,3 +1,4 @@
+#set text(font: "Charis SIL", size: 11pt, lang: "en")
 = Introduction To Computer Network
 
 == Networking Model

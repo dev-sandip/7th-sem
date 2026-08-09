@@ -1,5 +1,5 @@
 
-
+#set text(font: "Charis SIL", size: 11pt, lang: "en")
 = Physical Layer
 
 Physical Layer is the lowest layer of the OSI model that communicates directly with the various types of actual communication media. This layer is responsible for sending and receiving bits from one device to another.

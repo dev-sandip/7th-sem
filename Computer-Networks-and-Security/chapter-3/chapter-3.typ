@@ -1,4 +1,5 @@
 #import "@preview/gentle-clues:1.2.0": *
+#set text(font: "Charis SIL", size: 11pt, lang: "en")
 = Data Link Layer
 
 The Data Link Layer is the second layer in the OSI model and is responsible for node-to-node data transfer.
