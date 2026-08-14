@@ -19,7 +19,8 @@
   abstract: [Hands-on notes prepared while studying the Computer Networks and Security course at IOE Purwanchal Campus.],
   figure-index: (enabled: false),
   table-index: (enabled: false),
-  listing-index: (enabled: false), table-of-contents: none
+  listing-index: (enabled: false), 
+  // table-of-contents: none
 )
 
 

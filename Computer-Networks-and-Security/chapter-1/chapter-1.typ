@@ -44,7 +44,7 @@ The TCP/IP model is a simplified, four-layered architecture that serves as the f
 + *Link Layer:* Corresponds to the physical and data link layers of the OSI model and is responsible for the physical transmission of data over a network medium. It includes protocols such as Ethernet and Wi-Fi, which define how devices connect and communicate on a local network. 
 + *Internet Layer:* Corresponds to the network layer of the OSI model and is responsible for logical addressing and routing of data packets across different networks. The primary protocol at this layer is the Internet Protocol (IP), which assigns unique IP addresses to devices and determines the best path for data to travel.
 + *Transport Layer:* Corresponds to the transport layer of the OSI model and is responsible for end-to-end communication between devices, ensuring reliable data transfer, error recovery, and flow control.
- + *Application Layer:* Corresponds to the session, presentation, and application layers of the OSI model and provides network services directly to end-user applications. It enables users to interact with the network and access resources and services through protocols such as HTTP, FTP, SMTP, and DNS.
++ *Application Layer:* Corresponds to the session, presentation, and application layers of the OSI model and provides network services directly to end-user applications. It enables users to interact with the network and access resources and services through protocols such as HTTP, FTP, SMTP, and DNS.
 
  === Comparison between OSI and TCP/IP Model 
 
