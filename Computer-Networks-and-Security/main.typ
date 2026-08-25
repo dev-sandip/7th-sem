@@ -5,6 +5,11 @@
   lang: "en",
   size: 10pt,
 )
+#set text(
+  font: "Charis SIL",
+  lang: "en",
+)
+#set par(justify: true)
 
 
 #show: gentle-clues.with(
@@ -27,5 +32,9 @@
 #include "chapter-1/chapter-1.typ"
 #include "chapter-2/chapter-2.typ"
 #include "chapter-3/chapter-3.typ"
+
 #include "chapter-5/chapter-5.typ"
+#include "chapter-6/chapter-6.typ"
+#include "chapter-7/chapter-7.typ"
+
 

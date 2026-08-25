@@ -195,7 +195,7 @@ Connection is established using a three-way handshake process, which involves th
 + The client sends a SYN packet to the server, indicating its desire to establish a connection.
 + The server responds with a SYN-ACK packet, acknowledging the client's request and indicating its willingness to establish a connection.
 + The client sends an ACK packet back to the server, confirming the establishment of the connection. Once the three-way handshake is complete, data can be transmitted between the client and server.
-#image("/assets/image-11.png")
+#image("/assets/image-11.png",width: 80%)
 
 === Termination of Connection
 Connection termination is a process that involves the exchange of FIN (finish) and ACK (acknowledge) packets between the client and server. The steps are as follows:
@@ -204,7 +204,7 @@ Connection termination is a process that involves the exchange of FIN (finish) a
 + The server then sends its own FIN packet to the client, indicating its desire to terminate the connection.
 + The client responds with an ACK packet, acknowledging the server's request to terminate the connection. Once the exchange of FIN and ACK packets is complete, the connection is considered terminated, and both parties can release any resources associated with the connection.
 
-#image("/assets/image-12.png")
+#image("/assets/image-12.png",width: 80%)
 
 
 
