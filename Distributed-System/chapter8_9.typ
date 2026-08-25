@@ -106,7 +106,7 @@ If T2 tries to write `A` after T1, but a transaction with a later timestamp has 
 
 A flat transaction is a transaction that is treated as one single unit of work. It does not contain other transactions inside it.
 
-#image("assets/image-6.png")
+#image("../assets/image-6a.png")
 - All operations belong to the same transaction.
 - If any critical operation fails, the whole transaction may be rolled back.
 - Simple to manage.
@@ -117,7 +117,7 @@ Example: Transferring money from Account A to Account B.
 
 A nested transaction is a transaction that contains one or more sub-transactions inside it.
 
-#image("assets/image-7.png")
+#image("../assets/image-7a.png")
 
 
   - The main transaction is called the parent transaction.
@@ -168,7 +168,7 @@ A nested transaction is a transaction that contains one or more sub-transactions
 
 - If all participants vote YES → coordinator sends COMMIT.
 - If any participant votes NO → coordinator sends ABORT.
-#image("assets/image-8.png",width: 30%)
+#image("../assets/image-8a.png",width: 30%)
 
 == 2. Three-Phase Commit (3PC)
 
@@ -182,7 +182,7 @@ The three phases are:
   - If everyone agrees, coordinator tells participants to prepare for commit.
 + *DoCommit*
   - Coordinator sends the final COMMIT command.
-  #image("assets/image-9.png",width: 30%)
+  #image("../assets/image-9a.png",width: 30%)
 == Nested Transaction vs Distributed Transaction 
   #table(
   columns: 3,

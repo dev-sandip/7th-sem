@@ -84,7 +84,10 @@ When a client requests a domain name, resolution follows a 6-step lookup chain:
 #align(center)[
   #image("/assets/image-5.png", width: 70%)
 ]
-
+=== DNS Recusrive Query
+In a recursive query, the client requests that the DNS resolver perform the entire resolution process on its behalf. The resolver will query each level of the DNS hierarchy until it retrieves the final IP address, returning it to the client. This method simplifies client-side logic but increases load on the resolver. 
+=== DNS Iterative Query
+In an iterative query, the client receives referrals from each DNS server in the hierarchy. The client must then query the next server in the chain until it reaches the authoritative server. This approach distributes the workload but requires more complex client-side logic and multiple round trips.
 === Hierarchy and Architecture
 
 The Domain Name Space is structured like an inverted tree:
@@ -94,6 +97,14 @@ The Domain Name Space is structured like an inverted tree:
 - *Authoritative Name Servers*: Host specific zone records for second-level domain registrations.
 - *DNS Caching & Resolvers*: Temporary storage structures and query handlers that reduce query latency across the internet.
 
+==== Explain iterative query for browsing www.youtube.com.
+
+When a user attempts to access `www.youtube.com`, the browser initiates an iterative DNS query to resolve the domain name into an IP address. The process unfolds as follows:
++ *Browser Cache*: The browser first checks its cache for a recent mapping of `www.youtube.com`. If found, it uses the cached IP address to establish a connection.
++ *Local Resolver*: If the browser cache does not contain the mapping, the query is sent to the Local DNS Resolver, typically provided by the user's ISP.
++ *Root Name Server*: The Local Resolver queries a Root Name Server (`.`), which responds with the address of the appropriate Top-Level Domain (TLD) server for `.com`.
++ *TLD Name Server*: The Local Resolver then queries the `.com` TLD Name Server, which provides the address of the Authoritative Name Server for `youtube.com`.
++ *Authoritative Name Server*: The Local Resolver queries the Authoritative Name Server for `youtube.com`, which returns the specific IP address associated with `www.youtube.com`.
 == Peer-to-Peer (P2P) Architecture
 
 In a Peer-to-Peer network, participating nodes (*peers*) function as both clients and servers simultaneously, distributing work without relying on centralized host systems.
@@ -126,3 +137,40 @@ Primary functions include:
   [High Anonymity Proxy], [Hides client IP and conceals the fact that a proxy is being used.],
   [Distorting Proxy], [Sends a modified or false client IP address to destination servers.]
 )
+
+== DHCP Lease Renewal & Rebinding
+#table(
+  columns: (1fr, 1.2fr, 2.5fr),
+  stroke: 0.5pt + luma(180),
+  fill: (x, y) => if y == 0 { rgb("eef2f7") } else { none },
+  align: top + left,
+
+  [*Stage / Timer*], [*Message Type*], [*Action & Response*],
+
+  [ *T1: Renewal* \ _(50% Lease)_ ],
+  [ Unicast \ `DHCPREQUEST` ],
+  [ Client asks original server to extend lease. \
+    #text(fill: rgb("008000"), weight: "bold")[#sym.arrow.r] Server sends `DHCPACK` #sym.arrow.r Lease renewed & timers reset. ],
+
+  [ *T2: Rebinding* \ _(87.5% Lease)_ ],
+  [ Broadcast \ `DHCPREQUEST` ],
+  [ Sent if T1 fails. Client asks *any* network DHCP server. \
+    #text(fill: rgb("008000"), weight: "bold")[#sym.arrow.r] `DHCPACK` #sym.arrow.r Lease renewed. \
+    #text(fill: rgb("c00000"), weight: "bold")[#sym.arrow.r] `DHCPNAK` #sym.arrow.r IP dropped immediately. ],
+
+  [ *Expiration* \ _(100% Lease)_ ],
+  [ N/A ],
+  [ Lease expires if no ACK is received. Client drops the IP address and restarts full *DORA* cycle from scratch. ]
+)
+
+#v(0.5em)
+
+#block(
+  fill: rgb("f9f9f9"),
+  inset: 10pt,
+  radius: 4pt,
+  stroke: 0.5pt + luma(200),
+)[
+  #text(weight: "bold")[Key Takeaway:]
+  Renewal starts at *50%* via direct *Unicast*. Rebinding happens at *87.5%* via network *Broadcast* if the primary server fails to respond.
+]
