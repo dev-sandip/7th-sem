@@ -1,137 +1,237 @@
-= CORBA(Common Object Request Broker Architecture):
-It is a standard developed by OMG (Object Management Group) that allows objects on different computers and written in different programming languages to communicate and invoke methods on each other.
-== Architecture Of CORBA
-#image("../../assets/image-4a.png")
-+  *Client*
-  - The part of the system that makes a request for a service.
-  - The client calls methods on remote objects using a stub, which makes it seem like the object is local.
-+  *Stub*
-  - A proxy generated from the IDL (Interface Definition Language).
-  - It handles marshalling (packing method parameters) and unmarshalling (unpacking results).
-  - Bridges the client to the ORB.
-+  *Object Request Broker (ORB)*
-  - The core of CORBA.
-  - It acts as a middleware, passing method calls from client to server.
-  - Manages communication, object location, connection handling, and data conversion.
-  - Ensures location transparency: clients don't need to know where the object is.
-+  *IDL (Interface Definition Language)*
-  - Used to define interfaces for CORBA objects in a language-neutral way.
-  - Compilers generate the client stubs and server skeletons from this.
-+  *Skeleton*
-  - The server-side proxy also generated from IDL.
-  - Receives calls from the ORB and forwards them to the servant (actual implementation).
-+  *Object Adapter (POA -- Portable Object Adapter)*
-  - Connects the ORB to the servant.
-  - Manages object activation, request dispatch, and lifecycle.
-  - Allows persistent or transient object references.
-+  *Servant*
-  - The actual implementation of the object that contains the business logic.
-  - Responds to method calls forwarded from the skeleton.
+#set text(font: "Charis SIL", size: 11pt, lang: "en")
+#set par(justify: true)
 
-#pagebreak()
- == Main CORBA Services
+= Distributed Heterogeneous Applications and CORBA
 
-+ *Naming Service* \
-  Provides names for distributed objects and helps clients locate objects.
+== Middleware
 
-+ *Trading Service* \
-  Helps clients find objects based on the services they provide.
+*Middleware* is a software layer between applications and the operating
+system/network. It makes communication between distributed systems
+easier by hiding network complexity.
 
-+   *Event Service* \
-  Provides event-based communication between distributed objects.
+=== Role of Middleware
 
-+ *Transaction Service* \
-  Manages distributed transactions and maintains consistency.
+- *Communication*: Allows processes on different computers to communicate.
+- *Transparency*: Hides network details such as location and data transfer.
+- *Interoperability*: Allows different operating systems, hardware, and
+  programming languages to work together.
+- *Remote Invocation*: Supports RPC, RMI, and CORBA for calling remote
+  procedures or methods.
+- *Data Conversion*: Converts data into a common format.
+- *Naming*: Helps clients find remote objects and services.
+- *Security*: Provides authentication and access control.
+- *Fault Handling*: Helps handle communication and system failures.
 
-
-+ *Security Service* \
-  Provides authentication, authorization and access control.
-
-
-+ *Life Cycle Service* \
-  Supports creation, deletion, copying and movement of objects.
-
-
-+ *Persistence Service* \
-  Allows objects to save and restore their state.
-
-
-+ *Concurrency Control Service* \
-  Controls simultaneous access to shared objects.
-
-
-= Middleware
-Middleware is a software layer that hides the complexity of network communication and allows distributed applications to communicate easily.
-
-
-
-== Main Needs
-
-*Simplifies Communication* \
-Allows processes on different computers to communicate easily.
-
-*Hides Network Complexity* \
-Users/programmers do not need to handle network details directly.
-
-*Location Transparency* \
-Allows access to remote resources without knowing their physical location.
-
-*Interoperability* \
-Helps different operating systems, hardware and programming languages work together.
-
-*Data Conversion* \
-Converts data into a common format so different systems can understand it.
-
-*Security* \
-Provides authentication and access control.
-
-*Reliability* \
-Helps handle communication failures and remote system failures.
-
-*Resource Sharing* \
-Makes it easier to share files, objects, services and other resources.
-== Roles of Middleware
-
-+ *Communication*
-  - Provides communication between processes running on different computers.
-+ *Transparency*
-  - Hides network details such as location, communication and data transfer from the user.
-+ *Interoperability*
-  - Allows different operating systems, hardware and programming languages to work together.
-+ *Remote Invocation*
-  - Supports RPC, RMI and CORBA for calling remote procedures or methods.
-+ *Data Conversion*
-  - Converts data into a common format so different systems can understand it.
-+ *Naming & Service Discovery*
-  - Helps clients locate remote services and objects.
-+ *Security*
-  - Provides authentication, authorization and secure communication.
-+ *Fault Handling*
-  - Helps detect and handle communication and system failures.
+== Homogeneous and Heterogeneous Distributed Systems
 
 #table(
   columns: 2,
-  [*Homogeneous Distributed System*], [*Heterogeneous Distributed System*],
-  [All computers use *similar hardware and software*.], [Computers may use *different hardware and software*.],
-  [Usually uses the *same operating system*.], [May use *different operating systems*.],
-  [Communication and resource sharing are *easier*.], [Communication is more *complex*.],
-  [Easier to manage and maintain.], [More difficult to manage and maintain.],
-  [Provides better compatibility.], [Requires middleware/standard protocols for interoperability.],
-  [Generally easier to implement.], [Generally more flexible and supports diverse systems.],
-  [Example: A network of computers running *Linux with similar hardware*.], [Example: A network containing *Windows, Linux and macOS* systems.],
+  [*Homogeneous System*], [*Heterogeneous System*],
+
+  [Uses similar hardware and software.],
+  [Uses different hardware and software.],
+
+  [Usually uses the same operating system.],
+  [May use different operating systems.],
+
+  [Communication is easier.],
+  [Communication is more complex.],
+
+  [Easier to manage and maintain.],
+  [More difficult to manage and maintain.],
+
+  [Less need for middleware for compatibility.],
+  [Uses middleware and standard protocols for interoperability.],
+
+  [Example: Similar Linux computers.],
+  [Example: Windows, Linux, and macOS computers working together.],
 )
 
-= Invocation Methods in CORBA
+== RMI
 
-In CORBA, invocation methods describe how a client requests a service or method from a remote object.
+*RMI (Remote Method Invocation)* is a mechanism that allows a program
+to call a method of an object located on another computer as if it were
+a local object.
 
-There are three main invocation methods:
+=== Working of RMI
 
-*Synchronous Invocation* \
-In synchronous invocation, the client waits for the server to complete the operation and return the result.
++ Client calls a method using a remote object reference.
++ The *stub* sends the request to the remote server.
++ The server receives the request and executes the method.
++ The result is sent back to the client.
++ The client receives the result.
 
-*Deferred Synchronous Invocation* \
-Here, the client sends the request but does not wait immediately for the result. The client can continue doing other work and later check/get the result.
+*Example:* A client application requests account information from a
+bank server using a remote method.
 
-*One-Way Invocation* \
-In one-way invocation, the client sends a request and does not expect a reply.
+== CORBA
+
+*CORBA (Common Object Request Broker Architecture)* is a standard
+developed by the *Object Management Group (OMG)*.
+
+It allows objects running on different computers and written in
+different programming languages to communicate with each other.
+
+=== CORBA Architecture
+
+#image("../../assets/image-4a.png")
+
+=== Components of CORBA
+
++ *Client*: Requests a service from a remote object.
+
++ *Stub*: Client-side proxy generated from IDL. It packs the request
+  and sends it to the ORB.
+
++ *ORB (Object Request Broker)*: The main middleware of CORBA. It
+  connects the client with the remote object and handles communication.
+
++ *IDL (Interface Definition Language)*: Defines the interface of a
+  CORBA object in a language-independent way.
+
++ *Skeleton*: Server-side code generated from IDL. It receives requests
+  from the ORB and passes them to the servant.
+
++ *Object Adapter (POA)*: Connects the ORB with the servant. It manages
+  object activation, requests, and object lifetime.
+
++ *Servant*: The actual implementation of the remote object containing
+  the business logic.
+
+=== CORBA Environment
+
+The main components of a CORBA environment are:
+
+- *Client*
+- *Client Stub*
+- *ORB*
+- *IDL*
+- *Object Adapter*
+- *Skeleton*
+- *Servant*
+
+Together, these components allow a client to invoke methods on remote
+objects.
+
+== Object Adapter
+
+An *Object Adapter* is a component that connects the *ORB* with the
+actual server object (servant).
+
+Its main functions are:
+
+- Activates and manages servants.
+- Connects client requests to the correct servant.
+- Manages object references and object lifetime.
+- Helps the ORB communicate with server objects.
+
+*POA (Portable Object Adapter)* is the commonly used object adapter
+in CORBA.
+
+== CORBA Services
+
+CORBA provides several standard services for distributed objects.
+
++ *Naming Service*: Helps clients find objects using their names.
+
++ *Trading Service*: Helps clients find objects based on the services
+  they provide.
+
++ *Event Service*: Supports event-based communication between objects.
+
++ *Transaction Service*: Manages distributed transactions.
+
++ *Security Service*: Provides authentication, authorization, and
+  access control.
+
++ *Life Cycle Service*: Supports creation, deletion, copying, and
+  movement of objects.
+
++ *Persistence Service*: Allows objects to save and restore their state.
+
++ *Concurrency Control Service*: Controls simultaneous access to
+  shared objects.
+
+== Invocation Methods in CORBA
+
+Invocation means requesting a method of a remote CORBA object.
+
+=== Synchronous Invocation
+
+The client sends a request and *waits for the result*.
+
+*Example:* Client asks a server for account balance and waits for the
+answer.
+
+=== Deferred Synchronous Invocation
+
+The client sends the request but *does not wait immediately*. It can
+perform other work and later collect the result.
+
+=== One-Way Invocation
+
+The client sends a request and *does not wait for a result*.
+
+It is useful when the client does not need a response.
+
+== Static and Dynamic Invocation
+
+CORBA provides two approaches for invoking remote methods.
+
+=== Static Invocation
+
+In *static invocation*, the client knows the remote object's interface
+in advance.
+
+- IDL is used to define the interface.
+- IDL compiler generates the *stub and skeleton*.
+- Client uses the generated stub to make calls.
+- It is easier and faster to use.
+
+*Example:* A banking client already knows the `getBalance()` method.
+
+=== Dynamic Invocation
+
+In *dynamic invocation*, the client does not need a pre-generated stub
+for the requested operation.
+
+- Client discovers the required operation at runtime.
+- It creates a request dynamically.
+- The ORB sends the request to the remote object.
+- It is more flexible but more complex.
+
+#table(
+  columns: 2,
+  [*Static Invocation*], [*Dynamic Invocation*],
+
+  [Interface is known at compile time.],
+  [Interface can be discovered at runtime.],
+
+  [Uses generated stubs.],
+  [Creates requests dynamically.],
+
+  [Simpler and faster.],
+  [More flexible but more complex.],
+
+  [Less runtime overhead.],
+  [More runtime overhead.],
+)
+
+== RMI and CORBA
+
+#table(
+  columns: 2,
+  [*RMI*], [*CORBA*],
+
+  [Allows remote method calls between objects.],
+  [Allows communication between distributed objects.],
+
+  [Mainly associated with Java.],
+  [Supports multiple programming languages.],
+
+  [Uses Java interfaces and remote objects.],
+  [Uses IDL to define language-independent interfaces.],
+
+  [Best suited for Java-based systems.],
+  [Suitable for heterogeneous systems.],
+)

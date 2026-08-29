@@ -1,281 +1,657 @@
-+ *Distributed Object* \
-  A distributed object is an object whose methods can be invoked by a client from another computer or JVM over a network, as if the object were local.
-+ *IDL (Interface Definition Language)* \
-  IDL is a language used to describe the interface of a distributed object so that programs written in different programming languages can communicate with it.
+#set text(
+  font: "Charis SIL",
+  size: 12pt,
+  lang: "en",
+)
 
-+ *Local Method Invocation (LMI)* \
-  *Definition:* Local method invocation is the process of calling a method of an object within the same process or JVM, without network communication.
-+ *Remote Method Invocation (RMI)* \
-  *Definition:* Remote method invocation is the process of calling a method of an object located in another process or JVM, possibly on another computer, through a network.
+#set par(justify: true)
 
-+ *Request-Reply Protocol* \
-  Request-Reply Protocol is a communication protocol used in distributed systems where a client sends a request to a server, and the server processes the request and sends back a reply.
+= Distributed Object and File Systems
 
-+ *Remote Interface* \
-  A Remote Interface in Java RMI is an interface that defines the methods that can be invoked remotely by a client.
+== Distributed Object
 
-  
-= Remote Procedure Call (RPC)
+A *distributed object* is an object located on another computer or
+process whose methods can be called through a network as if the object
+were local.
 
-Remote Procedure Call (RPC) allows a client program to call a function/procedure on a remote server as if it were a local function.
-// #image("assets/image.png",width: 90%)
-RPC architecture has mainly five components of the program:
+*Example:* A client on one computer calls a method of an object running
+on another computer.
 
-+ *Client* -- The program that wants to call a remote function.
-+ *Client Stub* -- A helper that prepares the data to send to the server.
-+ *RPC Runtime* -- Manages communication over the network.
-+ *Server Stub* -- A helper on the server side that receives the data and calls the actual function.
-+ *Server* -- The program that contains the function to execute and return results.
+== IDL (Interface Definition Language)
 
-*Steps in simple words*
+*IDL* is a language-independent way of describing the interface of a
+distributed object.
 
-+ *Client makes a call* \
-  The client calls a remote function just like a normal function.
-+ *Client stub receives the call* \
-  The stub acts as a local representative of the remote procedure.
-+ *Marshalling* \
-  The client stub converts the arguments into a format suitable for network transmission.
-+ *Request transmission* \
-  The RPC runtime sends the request to the server.
-+ *Server stub receives it* \
-  The server stub unmarshals the request and extracts the arguments.
-+ *Procedure execution* \
-  The actual procedure runs on the server.
-+ *Result is returned* \
-  The server stub marshals the result and sends it back to the client.
-+ *Client gets the result* \
-  The client stub unmarshals the response and gives the result to the client program.
+It defines:
 
-= Remote Method Invocation (RMI)
-RMI is the means by which objects in different processes can communicate with one another.It allows object in one process to invoke or call the methods of an object in another process.
+- Methods provided by the object.
+- Parameters of methods.
+- Return types.
+- Exceptions.
 
-#image("../../assets/image-1a.png",width: 90%)
-== Working:
-+ *Client Application*
-  - The client wants to execute a method on the remote server.
-  - It calls the required method on the Stub as if it were a local method.
+IDL allows programs written in different programming languages to
+communicate with the same distributed object.
 
-+ *Stub --- Proxy Layer*
-  - The Stub acts as a proxy/representative of the remote object.
-  - It receives the method call from the client.
-  - It marshals (serializes) the method name and arguments into a form suitable for transmission.
-  - It passes the request to the Remote Reference Layer.
+== Local Method Invocation (LMI)
 
-+ *Remote Reference Layer (RRL)*
-  - The RRL manages the remote reference to the server object.
-  - It identifies the required remote object and manages the remote invocation.
-  - It passes the request to the Transport Layer.
+*Local Method Invocation* means calling a method of an object located
+within the same process or JVM.
 
-+ *Transport Layer*
-  - The Transport Layer establishes/manages the network connection between client and server.
-  - It sends the request across the network to the server-side RMI system.
+No network communication is required.
 
-+ *Skeleton --- Proxy Layer*
-  - The Skeleton receives the request from the Transport/RRL.
-  - It unmarshals (deserializes) the method name and arguments.
-  - It calls the appropriate method on the actual Server Application/remote object.
+== Remote Method Invocation (RMI)
 
-+ *Server Application*
-  - The actual remote method is executed.
-  - The server produces a return value or exception.
-  - The result is sent back through the Skeleton.
+*Remote Method Invocation* means calling a method of an object located
+in another process or computer through a network.
 
-+ *Response Back to Client* \
-  The response follows the reverse path:
+== Request-Reply Protocol
 
-== Dynamic RMI:
-Dynamic RMI generates the required proxy(stub) at runtime, So no pre-generated stub is required. 
+The *Request-Reply Protocol* is a basic communication method in which
+a client sends a request to a server and the server sends a reply.
 
-*How It works*
-- Server registers the remote object.
-- The client looks up the object in RMI registry.
-- Java dynamically creates a [rpxy (stub).
-- The client invokes methods through the proxy.
+=== Working
+
++ Client sends a *request*.
++ Server receives and processes the request.
++ Server sends a *reply*.
++ Client receives the reply.
+
+It is commonly used in RPC and RMI.
+
+== Remote Interface
+
+A *Remote Interface* defines the methods that can be called remotely
+by a client.
+
+In Java RMI, the remote interface normally extends
+`java.rmi.Remote`, and remote methods can throw
+`RemoteException`.
+
+#pagebreak()
+
+== Remote Procedure Call (RPC)
+
+*RPC* allows a client to call a procedure or function running on a
+remote server as if it were a local function.
+
+=== Components of RPC
+
++ *Client*: Requests a remote procedure.
++ *Client Stub*: Converts the client request into a network message.
++ *RPC Runtime*: Handles network communication.
++ *Server Stub*: Receives the request and passes it to the procedure.
++ *Server*: Executes the actual procedure.
+
+=== Working of RPC
+
++ *Client makes a call*: Client calls the remote procedure.
++ *Client Stub*: Receives the call and prepares the parameters.
++ *Marshalling*: Parameters are converted into a transferable format.
++ *Request Transmission*: RPC runtime sends the request to the server.
++ *Server Stub*: Receives and unmarshals the request.
++ *Procedure Execution*: Server executes the actual procedure.
++ *Result*: Server sends the result back.
++ *Client receives result*: Client stub unmarshals the result and gives
+  it to the client.
+
+== Modern RPC Communication Semantics
+
+Communication semantics describe what happens when a request or reply
+is lost.
+
+=== Request-Retry
+
+If the request or reply is lost, the client retransmits the request.
+
+The server uses a request ID or sequence number to detect duplicate
+requests.
+
+=== At-Least-Once Semantics
+
+The client keeps retransmitting until a reply is received.
+
+Therefore, the operation is executed *at least once*, but it may be
+executed more than once.
+
+=== At-Most-Once Semantics
+
+The server detects duplicate requests using request IDs or sequence
+numbers.
+
+Therefore, an operation is executed *zero or one time*.
+
+This is safer for operations that should not be repeated.
+
+=== Maybe Semantics
+
+The client does not know whether the request was executed when no
+reply is received.
+
+The operation may have been executed or may not have been executed.
+
+#pagebreak()
+
+== Problems in Parameter Passing in RPC
+
+Passing parameters in RPC is more difficult than a local procedure call
+because data must travel through a network.
+
+Main problems are:
+
+- *Different Data Representations*: Different machines may use
+  different formats for numbers and characters.
+- *Pointers*: A pointer in one machine cannot directly refer to memory
+  on another machine.
+- *Complex Data*: Structures, arrays, and objects need proper
+  serialization.
+- *Call-by-Reference*: Remote memory references cannot directly be used.
+- *Large Data*: Sending large parameters increases network traffic.
+- *Data Conversion*: Parameters must be converted into a common format.
+
+*Solution:* Marshalling and data representation techniques such as
+XDR are used to convert data into a machine-independent format.
+
+== Asynchronous RPC
+
+In normal RPC, the client waits for the reply.
+
+In *asynchronous RPC*, the client sends the request and continues its
+work without waiting immediately for the result.
+
+=== Alternatives of Asynchronous RPC
+
++ *Client continues and later checks*: Client sends a request and
+  continues working. Later it asks for the result.
+
++ *Callback*: Server sends the result to a callback function when the
+  operation is completed.
+
++ *Notification*: Server sends a notification when the result is ready.
+
+#pagebreak()
+
+== Remote Method Invocation (RMI)
+
+RMI allows an object in one process to invoke methods of an object in
+another process.
+
+#image("../../assets/image-1a.png", width: 90%)
+
+=== Working of RMI
+
++ *Client Application*: Calls a method on the remote object.
++ *Stub / Proxy*: Acts as a local representative of the remote object.
++ *Marshalling*: Converts method name and parameters into a transferable
+  format.
++ *Remote Reference Layer*: Manages the reference to the remote object.
++ *Transport Layer*: Sends the request through the network.
++ *Skeleton / Server-side layer*: Receives the request and calls the
+  actual object.
++ *Server Application*: Executes the remote method.
++ *Response*: Result or exception is returned to the client.
+
+== Static RMI
+
+In *static RMI*, the required stub/proxy is generated before the
+program runs.
+
+=== Working
+
++ Define the remote interface.
++ Implement the remote object.
++ Generate the required stub/proxy.
++ Register the remote object.
++ Client looks up the object.
++ Client calls the remote method through the stub.
+
+*Advantage:* Simple and efficient.
+
+== Dynamic RMI
+
+In *dynamic RMI*, the required proxy/stub information is obtained or
+created at runtime instead of depending completely on a pre-generated
+stub.
+
+=== Working
+
++ Server registers the remote object.
++ Client looks up the remote object.
++ Required proxy information is obtained dynamically.
++ A proxy is created or loaded at runtime.
++ Client invokes the remote method through the proxy.
+
+*Advantage:* More flexible than static invocation.
+
+== Importance of IDL in Distributed Object Communication
+
+IDL provides a common interface between different languages and
+platforms.
+
+It:
+
+- Defines the methods and parameters of an object.
+- Hides programming-language differences.
+- Allows different languages to communicate.
+- Helps generate communication code such as stubs and skeletons.
+
+*Note:* IDL is especially important in systems such as CORBA. Java RMI
+primarily uses Java remote interfaces rather than CORBA IDL.
+
+#pagebreak()
+
 == Functionalities Provided by RMI Software
 
-RMI (Remote Method Invocation) provides the following functionalities:
++ *Remote Object Creation*: Creates objects that can be accessed remotely.
++ *Remote Object Registration*: Registers objects with a registry.
++ *Remote Object Lookup*: Allows clients to find remote objects.
++ *Remote Method Invocation*: Allows clients to call remote methods.
++ *Parameter Passing*: Serializes and transfers parameters and results.
++ *Remote Object References*: Maintains references to remote objects.
++ *Communication Management*: Handles client-server communication.
++ *Exception Handling*: Sends remote exceptions back to the client.
 
-+ *Remote Object Creation*
-  - Creates objects that can be accessed by clients over a network.
-+ *Remote Object Registration*
-  - Registers a remote object with the RMI Registry using a unique name.
-+ *Remote Object Lookup*
-  - Allows the client to find and obtain a reference to a remote object.
-+ *Remote Method Invocation*
-  - Allows a client to call methods of a remote object as if they were local methods.
-+ *Parameter Passing*
-  - Provides marshalling and unmarshalling of method arguments and return values.
-+ *Remote Object Reference*
-  - Maintains references to objects located on remote machines.
-+ *Communication Management*
-  - Handles communication between client and remote server through the underlying transport mechanism.
-+ *Exception Handling*
-  - Transfers exceptions generated during remote method execution back to the client.
-= Differences between RMI and RPC
-  #table(
+== RMI vs RPC
+
+#table(
   columns: 3,
   [*Basis*], [*RPC*], [*RMI*],
-  [*Communication model*], [Calls remote procedures/functions], [Calls methods of remote objects],
-  [*Programming paradigm*], [Procedure-oriented], [*Object-oriented*],
-  [*Objects*], [Mainly works with data/parameters], [Can pass *objects as parameters and return objects*],
-  [*Encapsulation*], [Procedure and data are generally separate], [Data and methods are encapsulated in objects],
-  [*Inheritance*], [Not naturally supported], [Supports *inheritance and polymorphism*],
-  [*Complex data*], [Requires explicit data representation], [Java objects can be serialized and transmitted],
-  [*Language*], [Can support multiple languages], [Mainly designed for *Java-to-Java* communication],
-  [*Remote references*], [Usually procedure-oriented], [Supports *references to remote objects*],
-  [*Object-oriented features*], [Limited], [Supports Java's OO features naturally],
-  [*Development*], [More work for object-oriented applications], [Easier for distributed Java applications],
+
+  [*Meaning*],
+  [Calls remote procedures/functions.],
+  [Calls methods of remote objects.],
+
+  [*Programming Model*],
+  [Procedure-oriented.],
+  [Object-oriented.],
+
+  [*Object Support*],
+  [Mainly passes data/parameters.],
+  [Can pass objects and object references.],
+
+  [*Encapsulation*],
+  [Data and procedures are separate.],
+  [Data and methods are encapsulated in objects.],
+
+  [*Inheritance*],
+  [Not naturally supported.],
+  [Supports object-oriented features.],
+
+  [*Language*],
+  [Can support multiple languages.],
+  [Java RMI is mainly used between Java programs.],
+
+  [*Remote Reference*],
+  [Usually procedure-oriented.],
+  [Supports references to remote objects.],
 )
-= Differences between Stateful and Stateless Services
+
+== Distributed Object Communication
+
+Distributed objects can communicate using:
+
+- *RMI*: Client invokes methods on remote objects.
+- *RPC*: Client calls procedures on remote servers.
+- *CORBA*: Objects written in different languages can communicate.
+- *Message Passing*: Objects exchange messages through a network.
+
+The basic process is:
+
+`Client -> Request -> Network -> Remote Object -> Response -> Client`
+
+#pagebreak()
+
+== Stateful and Stateless Services
+
 #table(
   columns: 2,
-  [*Stateful*], [*Stateless*],
-  [Server *remembers* the client's information.], [Server *does not remember* client information.],
-  [Server keeps track of open files.], [Each request contains all required information.],
-  [Faster communication.], [Slightly more communication overhead.],
-  [Failure recovery is difficult.], [Failure recovery is easy.],
+  [*Stateful Service*], [*Stateless Service*],
+
+  [Server remembers information about the client.],
+  [Server does not remember previous client requests.],
+
+  [Each request may depend on previous requests.],
+  [Each request contains all required information.],
+
+  [Example: Open file session.],
+  [Example: Independent file request.],
+
+  [Failure recovery is more difficult.],
+  [Failure recovery is easier.],
+
+  [May require more server state.],
+  [Less server state is required.],
 )
 
-= File Service Architecture of DFS
+== Distributed File System (DFS)
+
+A *Distributed File System* stores files on multiple computers and
+allows users to access them as if they were local files.
+
+=== Requirements of DFS
+
++ *Transparency*: Remote files should appear like local files.
++ *Location Independence*: Users do not need to know where files are stored.
++ *Sharing*: Multiple users can share files.
++ *Reliability*: Files should remain available during failures.
++ *Fault Tolerance*: The system should continue despite failures.
++ *Performance*: File access should be fast.
++ *Scalability*: It should support increasing users and files.
++ *Security*: Files should be protected from unauthorized access.
++ *Consistency*: Users should see correct file versions.
+
+=== Importance of DFS
+
++ Allows *file and storage sharing*.
++ Makes remote files easy to access.
++ Improves availability through replication.
++ Can improve performance.
++ Supports system scalability.
++ Allows distributed storage resources to be shared.
+
+#pagebreak()
+
+== File Service Architecture of DFS
+
 #image("../../assets/image-2a.png")
 
-A DFS consists of three main components:
+A DFS file service mainly contains:
 
-+ *Flat File Service*
-  - It manages the actual contents of files.
-  - It uses a Unique File Identifier (UFID) to identify each file.
-  - Main operations are:
-    - Read,Write,Create,Delete,GetAttributes,SetAttributes
+=== Flat File Service
 
-+ *Directory Service*
-  - It provides a mapping between a file name and its UFID.
-  - It manages file names and directories.
-  - Main operations are:
-    - Lookup -- finds UFID using a file name.
-    - AddName -- adds a name for a file.
-    - UnName -- removes a file name.
-    - GetNames -- gets names associated with a file.
+It manages the actual contents of files.
 
-+ *Client Module*
-  - It runs on the client computer.
-  - It combines the functions of the directory service and flat file service into a single interface/API for applications.
-  - It uses caching to improve performance.
+Files are identified using a *UFID (Unique File Identifier)*.
 
-= Communication Between Distributed Systems
+Main operations:
 
-Communication between distributed systems means the exchange of data, messages, and requests between processes running on different computers connected through a network.
+- Read
+- Write
+- Create
+- Delete
+- Get Attributes
+- Set Attributes
+
+=== Directory Service
+
+It maps a human-readable file name to its UFID.
+
+Main operations:
+
+- *Lookup*: Finds UFID using a file name.
+- *AddName*: Adds a name to a file.
+- *UnName*: Removes a file name.
+- *GetNames*: Gets names associated with a file.
+
+=== Client Module
+
+The client module runs on the client computer.
+
+It provides an interface to applications and may use caching to
+improve performance.
+
+=== How DFS Encourages Storage Sharing
+
++ Files are stored on different servers.
++ Directory service provides a common way to locate files.
++ Clients access remote files through the client module.
++ Users do not need to know the physical storage location.
++ Therefore, storage resources of different machines can be shared.
+
 #pagebreak()
-== Basic Communication
-```
-+-------------+        Network         +-------------+
-|  System A   | ---------------------> |  System B   |
-|  (Client)   |   Request / Message    |  (Server)   |
-+-------------+ <--------------------- +-------------+
-                      Response
-```
-== Operation
 
-+ *Sender creates a message* -- A process prepares data or a request.
-+ *Message is sent* -- The message is transmitted through the network.
-+ *Network transfers it* -- Communication protocols carry the message to the destination.
-+ *Receiver gets the message* -- The receiving system accepts and processes it.
-+ *Response is returned* -- The receiver sends the result back to the sender.
+== SUN Network File System (SUN NFS)
 
-= SUN Network File System (SUN NFS) / One Modern DFS.
+*SUN NFS* is a distributed file system developed by Sun Microsystems.
+It allows users to access remote files as if they were local files.
 
-== Definition
+=== Properties of NFS
 
-SUN NFS is a network file system developed by SUN Microsystems that provides transparent access to remote files.
++ *Transparency*: Remote files appear like local files.
++ *Client-Server Model*: Machines can act as clients or servers.
++ *Mounting*: Remote file systems are attached to a local directory.
++ *Stateless*: Each request contains enough information to process it.
++ *Machine Independent*: Works across different machines.
++ *OS Independent*: Can work with different operating systems.
 
-== Properties
+=== NFS Architecture
 
-+ *Implementation + Specification* -- Defines how remote files are accessed.
-+ *Transparency* -- Remote files appear like local files.
-+ *Client-Server Model* -- A node can act as both client and server.
-+ *Mount* -- Makes a remote file system visible to the client.
-+ *Stateless* -- Each client request is self-contained.
-+ *Machine & OS Independent* -- Works on different machines and operating systems.
+#image("../../assets/image-3a.png", width: 80%)
 
-#image("../../assets/image-3a.png",width: 80%)
-+ *Protocol*
-  - Uses SUN RPC for communication.
-  - Uses XDR (External Data Representation) for machine-independent data representation.
-  - Protocol is stateless.
-  - Each procedure call contains all information required to complete the request.
-  - Stateless design provides easy crash recovery.
+=== NFS Protocols
 
-+ *Server Side*
-  - Provides a file handle to identify a file.
-  - File handle contains:
-    - File System ID → identifies disk partition.
-    - I-node Number → identifies the file.
-    - Generation Number → identifies the current version of the file.
-  - File System ID is stored in the superblock.
-  - Generation number is stored in the I-node.
++ *SUN RPC*: Used for client-server communication.
++ *XDR*: Provides machine-independent data representation.
++ *Mount Protocol*: Helps clients attach remote file systems.
++ *NFS Protocol*: Provides operations for accessing files.
 
-+ *Client Side*
-  - Provides a transparent interface to NFS.
-  - Uses mount to make the remote file system visible.
-  - Mapping between remote file name and remote file address is done through remote mount.
+=== NFS Server Side
 
-== NFS Operations
+The server provides a *file handle* to identify a file.
+
+A file handle contains information such as:
+
+- *File System ID*: Identifies the file system.
+- *I-node Number*: Identifies the file.
+- *Generation Number*: Identifies the current version of the file.
+
+=== NFS Client Side
+
++ Client requests a remote file system.
++ Mount operation makes the remote directory available.
++ Client accesses files through normal file operations.
++ Requests are sent to the NFS server using RPC.
+
+=== NFS Operations
 
 - Search for a file in a directory.
 - Read directory entries.
-- Create/manipulate links and directories.
-- Read/Write file attributes.
-- Read/Write file data.
+- Create and remove files.
+- Create and manipulate links.
+- Read and write file data.
+- Read and write file attributes.
 
-= Distributed File System (DFS)
-A Distributed File System (DFS) is a file system that stores files on multiple computers connected through a network and allows users to access them as if they were stored on their local computer.
-==== Requirements of a Distributed File System
+#pagebreak()
 
-+ *Transparency*
-  - Remote files should appear like local files to users.
-+ *Location Independence*
-  - Users should not need to know where a file is physically stored.
-+ *Sharing*
-  - Multiple users should be able to access and share files.
-+ *Reliability*
-  - Files should remain available even if a machine or network component fails.
-+ *Fault Tolerance*
-  - The system should continue working despite failures.
-+ *Performance*
-  - File access should be fast with minimum network delay.
-+ *Scalability*
-  - The system should support an increasing number of users, files and computers.
-+ *Security*
-  - Provides authentication, authorization and protection of files.
-+ *Consistency*
-  - Users should see correct and updated versions of shared files.
+== Design Issues of NFS
 
-==== Importance of DFS
+Important design issues include:
 
-+ *Resource Sharing* -- Allows users to share files and storage resources.
-+ *Easy Access* -- Remote files can be accessed like local files.
-+ *Improved Availability* -- Replication can keep files available during failures.
-+ *Better Performance* -- Data can be accessed from nearby or multiple servers.
-+ *Scalability* -- Storage capacity can be increased by adding more machines.
-+ *Centralized Management* -- Files can be managed across distributed servers.
-+ *Cost Effective* -- Uses multiple ordinary computers instead of one very large system.
-= DNS (Domain Name System)
-DNS (Domain Name System) is a distributed naming system that converts human-readable domain names into IP addresses.
-= Working Mechanism
++ *Statelessness*: The server does not need to maintain client session
+  information.
 
-+ Issue a DNS query to ask for IP address of #link("https://www.egnitenotes.com")[www.egnitenotes.com]
-+ Issue a query to root name server.
-+ Returns the IP address of TLD.
-+ Issue a query and sent to TLD servers.
-+ Reply with ns1.egnitenotes.com and IP address.
-+ Issue another query and sent to ns1.egnitenotes.com
-+ Reply IP address of #link("https://www.egnitenotes.com")[www.egnitenotes.com]
-+ Return IP address of #link("https://www.egnitenotes.com")[www.egnitenotes.com] to client.
-+ Request for web content to IP address of #link("https://www.egnitenotes.com")[www.egnitenotes.com]
++ *Naming*: The system must provide a way to locate remote files.
 
-==== Naming necessary in a distributed system?
-Naming is necessary to uniquely identify and locate resources, services, computers, files, and objects in a distributed system.
++ *File Identification*: File handles are used to identify files.
 
++ *Caching*: Clients can cache data to reduce network communication.
 
-===  Request Replay Protocol
++ *Consistency*: Cached copies must be managed so users receive
+  appropriate file data.
 
-Request Replay Protocol is a protocol used in distributed systems to handle lost or duplicated requests caused by communication or server failures.
++ *Failure Handling*: Stateless operation makes server crash recovery
+  easier.
+
++ *Security*: Access permissions and authentication must be considered.
+
++ *Performance*: Network delay and server load affect file access speed.
+
+== Event and Notification System
+
+An *event and notification system* allows distributed objects to
+communicate without directly calling each other.
+
+=== Working
+
++ An object generates an *event*.
++ The event is sent to an event/notification service.
++ Interested objects subscribe to the event.
++ The service sends the event to subscribed objects.
++ The receiving objects perform the required action.
+
+*Example:* A server generates a `FileUpdated` event. All clients
+subscribed to that event receive a notification.
+
+=== Benefit
+
+It provides *loose coupling* because the sender does not need to know
+the exact receiver.
+
+#pagebreak()
+
+== DNS (Domain Name System)
+
+*DNS* is a distributed hierarchical database that converts domain names
+into IP addresses.
+
+*Example:*
+
+`www.example.com -> IP address`
+
+=== Why DNS is a Distributed Hierarchical Database
+
+DNS is distributed because its information is stored across many name
+servers.
+
+It is hierarchical because names are organized into levels:
+
+`Root -> TLD -> Domain -> Host`
+
+For example:
+
+`www.example.com`
+
+- `.` -> Root
+- `.com` -> Top-Level Domain
+- `example.com` -> Domain
+- `www.example.com` -> Host
+
+=== DNS Query Types
+
+There are two common ways of resolving a DNS query.
+
+==== Recursive Query
+
+In a *recursive query*, the DNS server contacted by the client is
+responsible for finding the final answer.
+
+*Example:*
+
+`Client -> Local DNS -> Root/TLD/Authoritative DNS -> Local DNS -> Client`
+
+The client receives the final answer from the local DNS server.
+
+==== Iterative Query
+
+In an *iterative query*, the server does not find the complete answer.
+Instead, it gives the address of another server that may know the answer.
+
+*Example:*
+
+`DNS -> Root`
+
+`Root -> TLD server`
+
+`DNS -> TLD`
+
+`TLD -> Authoritative server`
+
+`DNS -> Authoritative server`
+
+`Authoritative server -> IP address`
+
+=== DNS Working Example
+
+Suppose the client wants the IP address of:
+
+`www.example.com`
+
++ Client sends a DNS query to its local DNS server.
++ Local DNS asks the *root server*.
++ Root server points to the `.com` TLD server.
++ Local DNS asks the `.com` TLD server.
++ TLD server points to the authoritative server for `example.com`.
++ Local DNS asks the authoritative server.
++ Authoritative server returns the IP address.
++ Local DNS returns the IP address to the client.
++ Client connects to the web server using that IP address.
+
+#pagebreak()
+
+== Naming in Distributed Systems
+
+Naming is necessary to uniquely identify and locate resources such as
+files, computers, services, and objects.
+
+=== Importance of Naming
+
++ Provides unique identification.
++ Helps locate resources.
++ Hides physical locations.
++ Supports resource sharing.
++ Provides location transparency.
+
+== Request-Reply and Failure Handling
+
+Communication may fail because requests or replies can be lost.
+
+=== Lost Request
+
+If the client does not receive a reply within a timeout, it may resend
+the request.
+
+=== Lost Reply
+
+The server may have completed the operation but the reply may be lost.
+
+If the client resends the request, the server uses a request ID or
+sequence number to detect the duplicate.
+
+It can return the previously stored result instead of executing the
+operation again.
+
+=== Duplicate Requests
+
+Sequence numbers or unique request IDs are used to identify duplicate
+requests.
+
+#pagebreak()
+
+== Summary of Important Terms
+
+#table(
+  columns: 2,
+  [*Term*], [*Simple Meaning*],
+
+  [*Distributed Object*],
+  [Object whose methods can be called remotely.],
+
+  [*IDL*],
+  [Language-independent description of an object interface.],
+
+  [*LMI*],
+  [Method call within the same process.],
+
+  [*RMI*],
+  [Calling a method of a remote object.],
+
+  [*RPC*],
+  [Calling a remote procedure as if it were local.],
+
+  [*DFS*],
+  [File system distributed across multiple computers.],
+
+  [*NFS*],
+  [A distributed file system for accessing remote files.],
+
+  [*DNS*],
+  [Hierarchical distributed system for resolving names.],
+
+  [*Stateful*],
+  [Server remembers client state.],
+
+  [*Stateless*],
+  [Server does not maintain client state.],
+
+  [*Middleware*],
+  [Software layer that hides distributed communication complexity.],
+)
