@@ -10,7 +10,7 @@
 #show: ilm.with(
   title: [Distributed System],
   author: "Sandip Sapkota  ",
-  date: datetime(year: 2026, month: 7, day: 01),
+  date: datetime(year: 2026, month: 9, day: 01),
   abstract: [Hands on note prepared while we were studying Distributed System Course at IOE Purwanchal Campus.],
   figure-index: (enabled: false),
   table-index: (enabled: false),
