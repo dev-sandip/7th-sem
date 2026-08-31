@@ -4,27 +4,20 @@ This repository contains structured course notes for 7th semester subjects, writ
 
 ## Subjects
 
-- Biomedical Instrumentation
+
 - Computer Networks and Security
 - Digital Signal Analysis and Processing
 - Distributed System
-- Energy, Environment and Society
-- ICT Project Management
 - Organization and Management
 
 ## Repository Structure
 
 ```text
 7th-sem/
-├── Biomedical-Instrumentation/
 ├── Computer-Networks-and-Security/
 ├── Digital-Signal-Analysis-and-Processing/
 ├── Distributed-System/
-├── Energy-Environment-and-Society/
-├── ICT-Project-Management/
 ├── Organization-and-Management/
-├── Data-Mining
-├── script.py
 └── Readme.md
 ```
 
