@@ -1,21 +1,43 @@
-#import "@preview/ilm:1.4.1": *
-#import "@preview/gentle-clues:1.2.0": *
-#set text(
-  font: "Charis SIL",
-  lang: "en",
+#import "@preview/bookly:3.1.0": *
+#let config-colors = (
+  primary: rgb("#1d90d0"),
+  secondary: rgb("#dddddd").darken(15%)
 )
-#set par(justify: true)
-
-#show: ilm.with(
-  title: [Organization and Management],
+#show: bookly.with(
   author: "Sandip Sapkota",
-  date: datetime(year: 2026, month: 7, day: 01),
-  abstract: [Hands on note prepared while we were studying Organization and Management Course at IOE Purwanchal Campus.],
-  figure-index: (enabled: false),
-  table-index: (enabled: false),
-  listing-index: (enabled: false),
-)
+  fonts: (
+    body: "Charis SIL",
+    math: "Lete Sans Math"
+  ),
+  title:"Organization and Management",
+  
+  
+  // theme: custom,
+  // theme: classic,
+  // theme: fancy,
+  theme: modern,
+  // theme: obook,
+  // theme: orly,
+  // theme: pretty,
+  // tufte: true,
+  lang: "en",
+  colors: config-colors,
+  title-page: book-title-page(
+    series: "Notes",
+    institution: "Sandip Sapkota",
+    subtitle: "Notes for O&M at IOE Purwanchal Campus.",
+    year: 2026
+    // logo: image("images/typst-logo.svg"),
+    // cover: image("images/book-cover.jpg", width: 45%)
+  ),
+  config-options: (
+    open-right: true,
+    // alt-margins: true,
 
+    part-numbering: "A"
+  )
+)
+#tableofcontents
 #include "chapter-1/chapter-1.typ"
 #include "chapter-2/chapter-2.typ"
 #include "chapter-3/chapter-3.typ"

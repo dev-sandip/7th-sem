@@ -326,7 +326,7 @@ Motivation is the process of encouraging employees to work willingly and effecti
 == Techniques of Motivation
 Motivation techniques are methods used by managers to encourage employees to work efficiently and achieve organizational goals.
 
-=== 1. Financial Techniques
+=== Financial Techniques
 These techniques motivate employees through monetary rewards.
 
 - *Salary and Wages* — Fair and competitive pay.
@@ -336,7 +336,7 @@ These techniques motivate employees through monetary rewards.
 - *Incentives* — Extra rewards for achieving targets.
 - *Overtime Pay* — Additional payment for extra working hours.
 
-=== 2. Non-Financial Techniques
+=== Non-Financial Techniques
 These motivate employees through recognition, growth, and better working conditions.
 
 - *Promotion* — Providing higher positions and responsibilities.
@@ -348,18 +348,17 @@ These motivate employees through recognition, growth, and better working conditi
 - *Good Working Conditions* — Providing a safe and comfortable workplace.
 - *Career Development* — Providing opportunities for professional growth.
 
-=== 3. Positive Motivation
+===  Positive Motivation
 Employees are encouraged through rewards and appreciation.
 
 #text(style: "italic")[Example: Giving a bonus or award to an employee who achieves a target.]
 
-=== 4. Negative Motivation
+=== Negative Motivation
 Employees are motivated through fear of punishment or penalties.
 
 #text(style: "italic")[Example: Warning or disciplinary action for repeated poor performance.]
 == Fear and Punishment Theory of Motivation
 
-=== Definition
 Fear and Punishment Theory states that employees can be motivated to perform their work by creating a fear of punishment or negative consequences for poor performance or misconduct.
 
 === Main Features
@@ -390,7 +389,6 @@ Fear and Punishment Theory states that employees can be motivated to perform the
 
 == Leadership
 
-=== Definition
 Leadership is the ability to influence, guide, and motivate people to work willingly toward achieving organizational goals.
 
 === Importance / Need of Leadership
@@ -435,7 +433,7 @@ Both dimensions are measured from 1 (low) to 9 (high).
 === Five Leadership Styles
 
 #table(
-  columns: (auto, 1fr, 1fr, 1fr),
+  columns: (auto, auto, auto, auto),
   inset: 3pt,
   align: left,
   stroke: 0.5pt,
@@ -448,8 +446,7 @@ Both dimensions are measured from 1 (low) to 9 (high).
 )
 
 === Grid
-
-// #image("assets/image.png")
+#image("/assets/image-18.png")
 
 === Significance
 - Helps managers identify their leadership style.
@@ -461,7 +458,7 @@ Both dimensions are measured from 1 (low) to 9 (high).
 == Leadership Styles
 Leadership style refers to the way a leader guides, directs, motivates, and influences employees to achieve organizational goals.
 
-=== 1. Autocratic Leadership
+=== Autocratic Leadership
 The leader makes decisions alone and gives instructions to employees.
 
 *Features:*
@@ -471,7 +468,7 @@ The leader makes decisions alone and gives instructions to employees.
 
 #text(style: "italic")[Suitable for: Emergency situations, military organizations, or when quick decisions are needed.]
 
-=== 2. Democratic Leadership
+===  Democratic Leadership
 The leader involves employees in decision-making and encourages their opinions.
 
 *Features:*
@@ -482,7 +479,7 @@ The leader involves employees in decision-making and encourages their opinions.
 
 #text(style: "italic")[Suitable for: Engineering projects, creative work, and organizations where teamwork is important.]
 
-=== 3. Laissez-Faire / Free-Rein Leadership
+===  Laissez-Faire / Free-Rein Leadership
 The leader gives employees considerable freedom to make decisions and perform their work.
 
 *Features:*
@@ -507,7 +504,8 @@ The leader gives employees considerable freedom to make decisions and perform th
   [Best suited for], [Emergency/strict situations], [Team/project work], [Skilled professionals],
 )
 
-=== Most Effective Style for an Organization/Engineering Project
+* Most Effective Style for an Organization/Engineering Project*\
+
 *Democratic Leadership* is generally the most suitable. ⭐
 
 It is particularly useful for an engineering project because engineering projects require:
@@ -522,7 +520,6 @@ It is particularly useful for an engineering project because engineering project
 #text(style: "italic")[Example: In a software or engineering project, the project leader can discuss technical problems with engineers, collect their ideas, and then make a decision with the team's input.]
 == Autocratic Leadership Style
 
-=== Definition
 Autocratic leadership is a leadership style in which the leader makes decisions alone and gives instructions to employees without much participation from them.
 
 === Main Characteristics
@@ -552,7 +549,7 @@ Autocratic leadership is a leadership style in which the leader makes decisions 
 #text(style: "italic")[A project manager tells engineers exactly what to do, how to do it, and when to complete it, without asking for their opinions.]
 == Democratic Leadership Style
 
-=== Definition
+
 Democratic leadership is a leadership style in which the leader involves employees in decision-making, encourages their opinions, and promotes teamwork.
 
 === Characteristics
@@ -569,7 +566,6 @@ Democratic leadership is a leadership style in which the leader involves employe
 
 == Trait Approach of Leadership
 
-=== Definition
 The Trait Approach states that effective leaders possess certain personal qualities or characteristics (traits) that make them different from ordinary people.
 
 It focuses on "what qualities make a good leader?"
@@ -600,12 +596,11 @@ It focuses on "what qualities make a good leader?"
 - Traits can vary depending on the organization and situation.
 == Behavioral Approach of Leadership
 
-=== Definition
 The Behavioral Approach focuses on the behavior and actions of a leader rather than the personal traits of the leader.
 
 It asks: "What does an effective leader do?"
 
-=== Main Idea
+* Main Idea*\
 According to this approach, effective leadership can be learned and developed by learning appropriate leadership behaviors.
 
 === Major Leadership Behaviors
@@ -620,17 +615,19 @@ Focuses on employees, relationships, satisfaction, and welfare. Leader supports 
 
 #text(style: "italic")[Example: A manager listens to employees' problems and involves them in decision-making.]
 
-=== Important Studies
+* Important Studies*
 
-==== 1. Ohio State Studies
-Identified two major leadership behaviors:
-- *Initiating Structure* — Focus on tasks, roles, rules, and performance.
-- *Consideration* — Focus on relationships, employee needs, and support.
++ *Ohio State Studies*
 
-==== 2. Michigan Studies
-Identified:
-- *Production-oriented leadership* — Focus on work and production.
-- *Employee-oriented leadership* — Focus on employees and their needs.
+  Identified two major leadership behaviors:
+    - *Initiating Structure* — Focus on tasks, roles, rules, and performance.
+    - *Consideration* — Focus on relationships, employee needs, and support.
+
++  *Michigan Studies*
+
+  Identified:
+    - *Production-oriented leadership* — Focus on work and production.
+    - *Employee-oriented leadership* — Focus on employees and their needs.
 
 === Advantages
 - Leadership behavior can be learned and improved.
@@ -676,10 +673,10 @@ Identified:
   [Time focus], [More future-oriented.], [More focused on present operations.],
   [Example], [A team leader inspires engineers to develop a new solution.], [A project manager prepares schedules, assigns resources, and monitors progress.],
 )
-== Most Effective Leadership Style
+* Most Effective Leadership Style*\
 For modern organizations, industrial organizations, and engineering projects, *Democratic/Participative Leadership* is generally considered the most effective. However, the situational or contingency approach is important because no single style is suitable for every situation.
 
-=== Why Democratic Leadership is Most Effective
+* Why Democratic Leadership is Most Effective*
 
 + *Employee Participation* — Employees are involved in decision-making and problem-solving.
 + *Better Ideas* — Engineering and industrial work often requires technical knowledge from different team members.
@@ -692,7 +689,6 @@ For modern organizations, industrial organizations, and engineering projects, *D
 + *Suitable for Complex Projects* — Engineering projects involve specialists from different fields, so collaboration is important.
 == Entrepreneurship
 
-=== Definition
 Entrepreneurship is the process of identifying a business opportunity, organizing resources, taking risks, and creating a new business or venture to earn profit and achieve goals.
 
 === Meaning of Entrepreneurship
@@ -706,7 +702,7 @@ Entrepreneurship involves:
 - Managing and operating the business.
 - Creating employment and economic value.
 
-=== Example
+*Example*\
 #text(style: "italic")[A person identifies a need for an online education platform, develops the service, invests money, hires employees, and takes the risk of running the business. This process is entrepreneurship, and the person is an entrepreneur.]
 == Characteristics of a Successful Entrepreneur
 A successful entrepreneur is a person who identifies opportunities, takes calculated risks, organizes resources, and develops a business successfully.
@@ -739,7 +735,7 @@ Entrepreneurship plays a vital role in the economic development of a country by 
 + *Export Promotion* — Innovative businesses can produce goods and services for international markets and earn foreign currency.
 + *Government Revenue* — Successful businesses contribute through taxes and other revenues.
 
-=== Why Should Entrepreneurship Be Promoted?
+* Why Should Entrepreneurship Be Promoted?*\
 Entrepreneurship should be promoted because it:
 
 - Reduces unemployment and poverty.
@@ -753,10 +749,10 @@ Entrepreneurship should be promoted because it:
 - Increases exports and foreign exchange earnings.
 - Strengthens the country's overall economic development.
 
-== Need to Promote Entrepreneurship in Nepal
+* Need to Promote Entrepreneurship in Nepal*\
 Nepal needs to promote entrepreneurship to create employment, utilize local resources, increase production, and achieve sustainable economic development.
 
-=== Major Reasons
+* Major Reasons*
 
 + *Creates Employment* — New businesses create jobs and reduce dependence on limited government and private-sector jobs.
 + *Reduces Unemployment* — Entrepreneurship provides opportunities for people to become job creators rather than only job seekers.
