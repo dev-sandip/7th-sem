@@ -18,7 +18,7 @@
 )
 
 #show: ilm.with(
-  title: [Compute Networks and Security],
+  title: [Computer Networks and Security],
   author: "Sandip Sapkota",
   date: datetime(year: 2026, month: 7, day: 1),
   abstract: [Hands-on notes prepared while studying the Computer Networks and Security course at IOE Purwanchal Campus.],

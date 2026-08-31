@@ -432,31 +432,3 @@ For example, when a user accesses a file, the user does not need to know:
 + Whether multiple copies of the file exist.
 + Whether the file has moved to another server.
 Thus, distributed systems hide internal complexity and provide a simple interface to users.
-
-== Summary
-
-A distributed system consists of multiple independent computers that communicate and cooperate through a network.
-
-The main goals are:
-+ Resource sharing.
-+ Transparency.
-+ Openness.
-+ Scalability.
-+ Reliability.
-+ Performance.
-+ Security.
-
-The major challenges are:
-
-+ Heterogeneity.
-+ Security.
-+ Scalability.
-+ Failure handling.
-+ Concurrency.
-+ Synchronization.
-+ Consistency.
-+ Communication delay.
-+ Transparency.
-
-
-

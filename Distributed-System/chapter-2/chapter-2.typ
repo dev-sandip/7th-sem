@@ -67,8 +67,6 @@ In Java RMI, the remote interface normally extends
 `java.rmi.Remote`, and remote methods can throw
 `RemoteException`.
 
-#pagebreak()
-
 == Remote Procedure Call (RPC)
 
 *RPC* allows a client to call a procedure or function running on a
@@ -129,7 +127,7 @@ reply is received.
 
 The operation may have been executed or may not have been executed.
 
-#pagebreak()
+
 
 == Problems in Parameter Passing in RPC
 
@@ -168,7 +166,7 @@ work without waiting immediately for the result.
 
 + *Notification*: Server sends a notification when the result is ready.
 
-#pagebreak()
+
 
 == Remote Method Invocation (RMI)
 
@@ -237,7 +235,7 @@ It:
 *Note:* IDL is especially important in systems such as CORBA. Java RMI
 primarily uses Java remote interfaces rather than CORBA IDL.
 
-#pagebreak()
+
 
 == Functionalities Provided by RMI Software
 
@@ -298,7 +296,7 @@ The basic process is:
 
 `Client -> Request -> Network -> Remote Object -> Response -> Client`
 
-#pagebreak()
+
 
 == Stateful and Stateless Services
 
@@ -348,7 +346,7 @@ allows users to access them as if they were local files.
 + Supports system scalability.
 + Allows distributed storage resources to be shared.
 
-#pagebreak()
+
 
 == File Service Architecture of DFS
 
@@ -397,7 +395,7 @@ improve performance.
 + Users do not need to know the physical storage location.
 + Therefore, storage resources of different machines can be shared.
 
-#pagebreak()
+
 
 == SUN Network File System (SUN NFS)
 
@@ -450,7 +448,7 @@ A file handle contains information such as:
 - Read and write file data.
 - Read and write file attributes.
 
-#pagebreak()
+
 
 == Design Issues of NFS
 
@@ -496,7 +494,7 @@ subscribed to that event receive a notification.
 It provides *loose coupling* because the sender does not need to know
 the exact receiver.
 
-#pagebreak()
+
 
 == DNS (Domain Name System)
 
@@ -575,7 +573,7 @@ Suppose the client wants the IP address of:
 + Local DNS returns the IP address to the client.
 + Client connects to the web server using that IP address.
 
-#pagebreak()
+
 
 == Naming in Distributed Systems
 
@@ -614,44 +612,4 @@ operation again.
 Sequence numbers or unique request IDs are used to identify duplicate
 requests.
 
-#pagebreak()
 
-== Summary of Important Terms
-
-#table(
-  columns: 2,
-  [*Term*], [*Simple Meaning*],
-
-  [*Distributed Object*],
-  [Object whose methods can be called remotely.],
-
-  [*IDL*],
-  [Language-independent description of an object interface.],
-
-  [*LMI*],
-  [Method call within the same process.],
-
-  [*RMI*],
-  [Calling a method of a remote object.],
-
-  [*RPC*],
-  [Calling a remote procedure as if it were local.],
-
-  [*DFS*],
-  [File system distributed across multiple computers.],
-
-  [*NFS*],
-  [A distributed file system for accessing remote files.],
-
-  [*DNS*],
-  [Hierarchical distributed system for resolving names.],
-
-  [*Stateful*],
-  [Server remembers client state.],
-
-  [*Stateless*],
-  [Server does not maintain client state.],
-
-  [*Middleware*],
-  [Software layer that hides distributed communication complexity.],
-)
