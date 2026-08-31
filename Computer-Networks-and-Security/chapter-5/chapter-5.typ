@@ -167,9 +167,10 @@ TCP is considered a reliable protocol because it provides mechanisms to ensure t
   )
 ]
 
-=== Why do you think that there exist two protocols in transport layer whereas there exists only one protocol in Internet layer in TCP/IP reference model.
+* Why do you think that there exist two protocols in transport layer whereas there exists only one protocol in Internet layer in TCP/IP reference model.*\
 The existence of two protocols in the transport layer (TCP and UDP) versus only one protocol in the Internet layer (IP) in the TCP/IP reference model can be attributed to the different requirements and functionalities of these layers. The Internet layer is primarily responsible for addressing and routing packets across networks, which is a fundamental and uniform requirement for all applications. Therefore, a single protocol (IP) suffices to handle these tasks. 
-=== For the client-server application over TCP, why must the server program be executed before the client program?
+
+* For the client-server application over TCP, why must the server program be executed before the client program?*\
 In a client-server application over TCP, the server program must be executed before the client program because the server needs to be in a listening state, ready to accept incoming connection requests from clients. When a client attempts to establish a connection, it sends a SYN (synchronize) packet to the server. If the server is not running or not listening on the specified port, it will not respond to the client's request, resulting in a failed connection attempt. By starting the server first, it ensures that it is prepared to handle incoming connections and can successfully establish communication with clients.
 
 
@@ -216,7 +217,7 @@ TCP synchronization is a process that ensures that both the sender and receiver 
 Flow control is a mechanism used by the transport layer to manage the rate of data transmission between sender and receiver. It ensures that the sender does not overwhelm the receiver with too much data at once, which could lead to buffer overflow and data loss. Flow control is typically implemented using a sliding window protocol, where the sender can only send a certain amount of data before receiving an acknowledgment from the receiver.
 
 
-=== How does the transport layer ensure that the complete message arrives at the destination and in the proper order?
+* How does the transport layer ensure that the complete message arrives at the destination and in the proper order?*\
 Transport layer protocols, such as TCP, ensure that the complete message arrives at the destination and in the proper order through several mechanisms:
 1. *Segmentation and Reassembly*: The transport layer breaks down large messages into smaller segments for transmission. Each segment is assigned a sequence number, which allows the receiver to reassemble the segments in the correct order, even if they arrive out of sequence.
 2. *Acknowledgments*: The receiver sends acknowledgments back to the sender for each segment received. If the sender does not receive an acknowledgment within a certain time frame, it will retransmit the segment, ensuring that all segments are eventually received.

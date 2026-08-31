@@ -1,3 +1,7 @@
+#set text(
+  font: "Charis SIL",
+  lang: "en",
+)
 = Introduction to IPV6
 IPV6 is the latest version of the Internet Protocol (IP) that is designed to replace the current version, IPv4. It was developed to address the limitations of IPv4, such as the exhaustion of available IP addresses and the need for improved security and performance.
 
