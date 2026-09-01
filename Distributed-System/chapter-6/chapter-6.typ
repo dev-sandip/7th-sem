@@ -436,7 +436,7 @@ Then a COORDINATOR message circulates through the ring.
 #table(
 columns: (1.8fr, 2.7fr, 2.7fr),
 stroke: 0.5pt,
-[#strong[F+ Heature]], [#strong[Bully]], [#strong[Ring]],
+[#strong[Feature]], [#strong[Bully]], [#strong[Ring]],
 [Structure], [No fixed ring required], [Logical ring required],
 [Winner], [Highest active ID], [Highest active ID],
 [Message path], [Directly contacts higher processes], [Message circulates around ring],
