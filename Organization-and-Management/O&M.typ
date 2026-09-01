@@ -9,8 +9,14 @@
     body: "Charis SIL",
     math: "Lete Sans Math"
   ),
-  title:"Organization and Management",
-  
+  title:"Organization & Management",
+  title-page: book-title-page(
+    series: "Notes",
+    institution: "IOE Purwanchal Campus",
+    subtitle: "Notes for O&M",
+    year: 2026,
+    
+  ),
   
   // theme: custom,
   // theme: classic,
@@ -22,14 +28,8 @@
   // tufte: true,
   lang: "en",
   colors: config-colors,
-  title-page: book-title-page(
-    series: "Notes",
-    institution: "Sandip Sapkota",
-    subtitle: "Notes for O&M at IOE Purwanchal Campus.",
-    year: 2026
-    // logo: image("images/typst-logo.svg"),
-    // cover: image("images/book-cover.jpg", width: 45%)
-  ),
+
+  
   config-options: (
     open-right: true,
     // alt-margins: true,
@@ -38,6 +38,7 @@
   )
 )
 #tableofcontents
+
 #include "chapter-1/chapter-1.typ"
 #include "chapter-2/chapter-2.typ"
 #include "chapter-3/chapter-3.typ"
