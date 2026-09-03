@@ -1,5 +1,11 @@
 from pathlib import Path
 import re
+from datetime import date
+
+today = date.today()
+year = today.year
+month = today.month
+day = today.day
 
 subject_name = input("Enter subject name: ").strip()
 chapters = int(input("Enter number of chapters: "))
@@ -17,7 +23,7 @@ main_content = f'''#import "@preview/ilm:1.4.1": *
 #show: ilm.with(
   title: [{subject_name}],
   author: "Sandip Sapkota  ",
-  date: datetime(year: 2026, month: 7, day: 01),
+  date: datetime(year: {year}, month: {month}, day: {day}),
   abstract: [Hands on note prepared while we were studying {subject_name} Course at IOE Purwanchal Campus.],
   bibliography: bibliography("refs.bib"),
   figure-index: (enabled: true),
@@ -32,7 +38,6 @@ main_content = f'''#import "@preview/ilm:1.4.1": *
 for i in range(1, chapters + 1):
     chapter_folder = subject_path / f"chapter-{i}"
     chapter_folder.mkdir(exist_ok=True)
-
     (chapter_folder / f"chapter-{i}.typ").touch()
 
 print(f"Created folder: {folder_name}")
