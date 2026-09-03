@@ -69,3 +69,4 @@
 #include "chapter-5/chapter-5.typ"
 #include "chapter-6/chapter-6.typ"
 #include "chapter-7/chapter-7.typ"
+#include "chapter-10/chapter-10.typ"
