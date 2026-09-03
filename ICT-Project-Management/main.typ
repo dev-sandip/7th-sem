@@ -63,3 +63,4 @@
 #tableofcontents
 
 #include "chapter-1/chapter-1.typ"
+#include "chapter-2/chapter-2.typ"

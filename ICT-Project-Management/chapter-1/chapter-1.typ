@@ -176,15 +176,7 @@ IT Project Management is important because it:
 + Improves team coordination.
 + Helps achieve project objectives
 
-== Challenges in IT Projects
 
-- *Scope Creep:* The goals and features of the project keep growing or changing after the work has already started.
-- *Rapid Technological Changes:* Technology moves so fast that the tools or software chosen at the start might be outdated before the project is even finished.
-- *Unrealistic Deadlines:* It is often hard to guess exactly how long coding and fixing bugs will take, which leads to rushed work or missed deadlines.
-- *Communication Gaps:* Misunderstandings happen easily between the technical developers building the project and the non-technical business managers or clients.
-- *Integration Problems:* It is often very difficult to make brand new software work smoothly with a company's older, existing computer systems.
-- *Security Risks:* Keeping data safe from hackers and following strict privacy laws adds a lot of extra complexity and testing to the project.
-- *Skill Shortages:* It can be hard to find and keep team members who have the specific, up-to-date technical skills needed to do the work.
 == Challenges in IT Projects
 
 - *Changing Goals:* The project keeps getting bigger or changing after the work has begun.
