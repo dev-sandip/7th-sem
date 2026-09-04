@@ -1,4 +1,4 @@
-== Project Quality Management
+= Project Quality Management
 
 Project quality management includes the processes required to ensure that the project satisfies the needs for which it is undertaken.
 

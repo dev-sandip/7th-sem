@@ -71,3 +71,4 @@
 #include "chapter-7/chapter-7.typ"
 #include "chapter-10/chapter-10.typ"
 #include "chapter-11/chapter-11.typ"
+#include "chapter-12/chapter-12.typ"

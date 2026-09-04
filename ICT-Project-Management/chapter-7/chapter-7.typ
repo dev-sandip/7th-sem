@@ -212,7 +212,7 @@ Project Scope Management is the process of defining, controlling, and managing w
   [*Example*], [Constructing a bridge.], [Technical specifications of a bridge such as length, width, etc.]
 )
 
-== Integrated Change Control (6 Marks)
+== Integrated Change Control 
 
 Integrated Change Control is the process of reviewing, approving, and managing all changes in a project. It checks how a change will affect scope, time, cost, quality, resources, and risks before making the change. Its main goal is to keep the project on track while allowing necessary changes.
 
@@ -252,8 +252,8 @@ WBS is a way to break a project into smaller and manageable tasks in a hierarchi
 + *Assign responsibility (Who):* Decide who will perform each task.
 + *Set monitoring points (Milestones):* Identify important checkpoints for progress.
 
-== How WBS Affects Work Estimates (3 Marks)
-
+*How WBS Affects Work Estimates *
+\
 + *Breaks Work into Manageable Units:* Smaller tasks are easier to analyze and estimate accurately.
 + *Improves Time Estimates:* Estimating each task separately creates a realistic schedule.
 + *Improves Cost Estimates:* Summing individual work package costs gives an accurate total project budget.
@@ -270,7 +270,7 @@ WBS is a way to break a project into smaller and manageable tasks in a hierarchi
 + *Phase-based Approach:* Divides the WBS according to project life cycle phases (e.g., Requirement Analysis #sym.arrow Design #sym.arrow Development #sym.arrow Testing #sym.arrow Deployment).
 + *Organization-based Approach:* Breaks down work according to organizational departments or teams (e.g., Software Team, Hardware Team, Marketing Team).
 
-== Responsibility Assignment Matrix (RAM) (3 Marks)
+== Responsibility Assignment Matrix (RAM) 
 
 Also called the *RACI Matrix*, it shows who is responsible for each task in a project:
 - *R (Responsible):* Person who actually performs the task.
@@ -280,7 +280,7 @@ Also called the *RACI Matrix*, it shows who is responsible for each task in a pr
 
 RAM connects WBS tasks with people or teams, making roles and responsibilities clear.
 
-== Defining Project Scope: Step-by-Step (5 Marks)
+== Defining Project Scope: Step-by-Step 
 
 As a project progresses, scope is refined from high-level summaries down to detailed work definitions through these steps:
 
