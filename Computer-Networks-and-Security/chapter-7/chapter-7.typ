@@ -198,7 +198,7 @@ Dual stack is the simplest and most reliable approach. Devices, routers, and ser
 * *Best for:* Modern networks upgrading hardware while keeping legacy compatibility.
 
 #align(center)[
-  #image("/assets/image-15.png", width: 80%)
+  #image("../../assets/image-15.png", width: 80%)
 ]
 
 === 2. Tunneling (Wrap IPv6 inside IPv4)
@@ -210,7 +210,7 @@ Tunneling allows two IPv6 networks to communicate with each other across an olde
   - *GRE / Manual Tunnels:* Direct point-to-point tunnels configured between specific network routers.
 
 #align(center)[
-  #image("/assets/IPV6Network1.png", width: 100%)
+  #image("../../assets/IPV6Network1.png", width: 100%)
 ]
 
 === 3. Translation (Translate Between Protocols)
