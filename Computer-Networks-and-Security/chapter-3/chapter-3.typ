@@ -33,7 +33,7 @@ A frame consists of the following parts:
 The character count framing method uses a field in the frame header to specify the number of characters (or bytes) in the entire frame, including the count field itself. When the data link layer at the destination reads this count, it knows exactly how many characters follow and can determine where the frame ends.
 
 #figure(
-  image("../../assets/image-1.png", width: 80%),
+  image("../../assets/image-2.png", width: 80%),
   caption: [Character Count Framing Method],
 )
 
@@ -102,7 +102,7 @@ Error control is the process of detecting and correcting errors that may occur d
   - *Synchronization:* The sender sends only one frame at a time, and the receiver receives only one frame at a time. Both entities must wait for each other to process and acknowledge transmission.
 
   #figure(
-    image("/assets/image-2.png", width: 45%),
+    image("../../assets/image-2.png", width: 45%),
     caption: [Stop-and-Wait ARQ Protocol Operation],
   )
 
@@ -229,7 +229,7 @@ In *Stop-and-Wait*, the sender transmits a single frame and waits for an acknowl
   $ W_s = 1, quad W_r = 1 $
 
 #figure(
-  image("/assets/image-2.png", width: 45%),
+  image("../../assets/image-2.png", width: 45%),
   caption: [Stop-and-Wait Flow Control Sequence],
 )
 
@@ -244,7 +244,7 @@ In *Sliding Window*, the sender can transmit multiple frames up to a pre-agreed 
 - *Receiver Window ($W_r$):* Holds valid frames that the receiver is eligible to accept.
 - *Pipelining:* Allows continuous frame transmission, significantly increasing channel utilization ($eta$).
 #figure(
-  image("/assets/image-3.png", width: 45%),
+  image("../../assets/image-3.png", width: 45%),
   caption: [Sliding Window Flow Control Sequence],
 )
 #figure(
@@ -385,7 +385,7 @@ The *IEEE (Institute of Electrical and Electronics Engineers)* 802 family define
   + To regulate the sequence in which token is passed the node involved in the token passing from a logical ring.
   + Each node passes the token to the node with the next lower ring address.
   + To complete the ring the node with the lowest address passes the token to the node with the highest address.
-  #image("/assets/image-4.png",width: 50%)
+  #image("../../assets/image-4.png",width: 50%)
   Caption: [IEEE 802.4 Token Bus Topology]/
   *Frame Format:*
 

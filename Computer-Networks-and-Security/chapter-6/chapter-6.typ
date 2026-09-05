@@ -82,7 +82,7 @@ When a client requests a domain name, resolution follows a 6-step lookup chain:
 + *Response & Cache*: The resolver receives the IP, caches it locally for future speed, and returns it to the client to open the connection.
 
 #align(center)[
-  #image("/assets/image-5.png", width: 70%)
+  #image("../../assets/image-5.png", width: 70%)
 ]
 === DNS Recusrive Query
 In a recursive query, the client requests that the DNS resolver perform the entire resolution process on its behalf. The resolver will query each level of the DNS hierarchy until it retrieves the final IP address, returning it to the client. This method simplifies client-side logic but increases load on the resolver. 

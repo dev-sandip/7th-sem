@@ -196,7 +196,7 @@ Connection is established using a three-way handshake process, which involves th
 + The client sends a SYN packet to the server, indicating its desire to establish a connection.
 + The server responds with a SYN-ACK packet, acknowledging the client's request and indicating its willingness to establish a connection.
 + The client sends an ACK packet back to the server, confirming the establishment of the connection. Once the three-way handshake is complete, data can be transmitted between the client and server.
-#image("/assets/image-11.png",width: 80%)
+#image("../../assets/image-11.png",width: 80%)
 
 === Termination of Connection
 Connection termination is a process that involves the exchange of FIN (finish) and ACK (acknowledge) packets between the client and server. The steps are as follows:
@@ -205,7 +205,7 @@ Connection termination is a process that involves the exchange of FIN (finish) a
 + The server then sends its own FIN packet to the client, indicating its desire to terminate the connection.
 + The client responds with an ACK packet, acknowledging the server's request to terminate the connection. Once the exchange of FIN and ACK packets is complete, the connection is considered terminated, and both parties can release any resources associated with the connection.
 
-#image("/assets/image-12.png",width: 80%)
+#image("../../assets/image-12.png",width: 80%)
 
 
 
@@ -245,11 +245,11 @@ _Traffic Shaping_ is the process of altering a traffic flow to avoid brust. It i
 
 === Leaky Bucket Algorithm
 The leaky bucket algorithm is a traffic shaping mechanism that controls the rate at which packets are sent into a network. It works by maintaining a fixed-size bucket that leaks at a constant rate. When packets arrive, they are added to the bucket. If the bucket overflows (i.e., if the incoming packet rate exceeds the leak rate), excess packets are discarded, effectively controlling the flow of traffic. This algorithm helps to smooth out bursts of traffic and maintain a steady flow, preventing congestion and ensuring that the network can handle the traffic load. The leaky bucket algorithm is particularly useful for applications that require a consistent data rate, such as video streaming or VoIP, where sudden spikes in traffic can lead to packet loss and degraded performance.
-#image("/assets/image-13.png")
+#image("../../assets/image-13.png")
 
 === Token Bucket Algorithm
 The token bucket algorithm is another traffic shaping mechanism that controls the rate of data transmission in a network. It works by maintaining a bucket that holds tokens, which are generated at a fixed rate. Each token represents permission to send a certain amount of data (e.g., one packet). When a packet arrives, it can only be sent if there are enough tokens in the bucket. If there are not enough tokens, the packet must wait until tokens are available or be discarded if it exceeds the maximum waiting time. This algorithm allows for bursts of traffic up to a certain limit while ensuring that the average transmission rate does not exceed the specified limit. The token bucket algorithm is particularly effective for applications that require flexibility in handling variable traffic patterns while still maintaining overall control over the data flow.
-#align(center,[#image("/assets/image-14.png",width: 80%)])
+#align(center,[#image("../../assets/image-14.png",width: 80%)])
 #table(
   columns: (1fr, 1fr),
   stroke: 0.5pt + luma(150),
