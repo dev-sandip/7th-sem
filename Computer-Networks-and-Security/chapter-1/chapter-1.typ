@@ -3,7 +3,7 @@
 
 == Networking Model
 + *Client Server Model:*
-    In this model, the client requests services and the server provides those services. The server is always on and waits for requests from clients. Examples include web servers, email servers, and database servers.
+    In this model, the client requests services and the server provides those services. The server is always on and waitristics of Structures for requests from clients. Examples include web servers, email servers, and database servers.
 
 + *Peer-to-Peer Model:*
     In this model, each node (peer) can act as both a client and a server. Peers share resources directly with each other without the need for a central server. Examples include file-sharing networks and decentralized applications.
