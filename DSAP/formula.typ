@@ -113,7 +113,7 @@ $ w_k[n] = cases(
   0 quad &"otherwise"
 ) $
 
-$ I_0(beta) = 1 + sum_(k=1)^oo [ frac(0.25 beta^2, k!^2) ]^k $
+$ I_0(beta) = 1 + sum_(k=1)^oo frac((0.25 beta^2) ^k, (k!)^2)  $
 
 == Chapter 6
 === Butterworth Filter Design
