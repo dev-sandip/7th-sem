@@ -1,4 +1,4 @@
-= Project Integration Management 
+= Project Integration Management
 == Project Integration Management
 
 Project Integration Management is the process of identifying, defining, combining, and coordinating all project management activities within the project management process groups. It connects all project knowledge areas and processes and ensures that all parts of the project work together smoothly. Integration is required from the beginning to the end of the project, and the project manager plays a vital role in coordinating different activities throughout the project life cycle.
@@ -17,13 +17,14 @@ Project Integration Management is the process of identifying, defining, combinin
   columns: (auto, auto, auto),
   inset: 10pt,
   align: horizon,
-  table.header(
-    [*Process Group*], [*Integration Management Process*], [*Major Output*]
-  ),
+  table.header([*Process Group*], [*Integration Management Process*], [*Major Output*]),
   [Initiating], [Developing the project charter], [Project Charter],
   [Planning], [Developing the project management plan], [Project Management Plan],
   [Executing], [Directing and managing project work], [Deliverables, work performance info, change requests],
-  [Monitoring and Controlling], [#set list(indent: 0pt);  (1) Monitor/Control Project Work \  (2) Perform Integrated Change Control], [#set list(indent: 0pt);  (1) Change Requests \  (2) Status updates],
+  [Monitoring and Controlling],
+  [#set list(indent: 0pt);  (1) Monitor/Control Project Work \  (2) Perform Integrated Change Control],
+  [#set list(indent: 0pt);  (1) Change Requests \  (2) Status updates],
+
   [Closing], [Close Project/Phase], [Product Transition],
 )
 + *Develop Project Charter:* Formally starts and authorizes the project, defining objectives, scope, and key stakeholders.
@@ -56,7 +57,7 @@ A Project Charter is a formal document that officially starts and authorizes a p
 
 The Project Charter Development process is performed during the Initiating Process Group. It formally authorizes the project.
 
-===  Inputs
+=== Inputs
 + *Business Documents:* Includes business case and benefits management plan.
 + *Agreements:* Includes contracts, MOUs, and service agreements.
 + *Enterprise Environmental Factors (EEF):* Includes company culture, government rules, market conditions, and external factors.
@@ -69,11 +70,11 @@ The Project Charter Development process is performed during the Initiating Proce
 + *Interpersonal and Team Skills:* Includes communication, conflict management, and meeting skills.
 + *Meetings:* Discussions with sponsors, stakeholders, and management to prepare the charter.
 
-===Outputs
+=== Outputs
 + *Project Charter:* The main output that officially authorizes the project.
 + *Assumption Log:* A document that records project assumptions and constraints.
 
-== SWOT Analysis 
+== SWOT Analysis
 
 SWOT analysis is a strategic planning tool used to identify and evaluate the Strengths, Weaknesses, Opportunities, and Threats of an individual, project, or organization. It helps managers understand internal and external factors that can affect the success of a project or business.
 
@@ -87,13 +88,13 @@ SWOT analysis is a strategic planning tool used to identify and evaluate the Str
 - To reduce weaknesses and defend against threats.
 - To support strategic decision-making.
 
-=== Example: Software Development Startup 
+=== Example: Software Development Startup
 - *Strengths:* Skilled developers, good programming knowledge, creative ideas.
 - *Weaknesses:* Limited budget, small team, lack of marketing experience.
 - *Opportunities:* Growing demand for software applications, new technology, online business growth.
 - *Threats:* High competition, rapid technology changes, large established companies.
 
-== Statement of Work (SOW) 
+== Statement of Work (SOW)
 
 A Statement of Work (SOW) is a formal document that defines the scope, objectives, deliverables, and timeline of a project. It describes what work will be done, who will do it, how it will be done, and when it will be completed. SOW is usually prepared during the planning phase and agreed upon by the client and service provider before starting the project to prevent misunderstandings.
 
@@ -108,7 +109,7 @@ A Statement of Work (SOW) is a formal document that defines the scope, objective
 + *Standards & Acceptance Criteria:* Defines how deliverables will be measured and approved.
 + *Cost / Budget:* Provides estimated project expenses.
 
-== Statement of Work (SOW) and Information System (IS) Project: Engineering College MIS 
+== Statement of Work (SOW) and Information System (IS) Project: Engineering College MIS
 
 === Statement of Work (SOW) for Engineering College MIS
 
@@ -201,18 +202,28 @@ Project Scope Management is the process of defining, controlling, and managing w
   columns: (auto, 1fr, 1fr),
   inset: 10pt,
   align: left,
-  table.header(
-    [*Aspect*], [*Project Scope*], [*Product Scope*]
-  ),
-  [*Definition*], [The work required to deliver a product, service, or result with specified features and functions.], [The features and functions of a product, service, or result.],
+  table.header([*Aspect*], [*Project Scope*], [*Product Scope*]),
+  [*Definition*],
+  [The work required to deliver a product, service, or result with specified features and functions.],
+  [The features and functions of a product, service, or result.],
+
   [*Relation*], [Project scope is a subset of product scope.], [Product scope is a superset of project scope.],
-  [*Focus*], [Focuses on *how* the work will be done to deliver the product.], [Focuses on *what* the product is and its specifications.],
-  [*Concerned With*], [Activities, tasks, processes, and deliverables of the project.], [Technical requirements, characteristics, and functionality of the final product.],
-  [*Measured By*], [Success is measured by whether the project is completed on time and within budget.], [Success is measured by whether the product meets user requirements and expectations.],
-  [*Example*], [Constructing a bridge.], [Technical specifications of a bridge such as length, width, etc.]
+  [*Focus*],
+  [Focuses on *how* the work will be done to deliver the product.],
+  [Focuses on *what* the product is and its specifications.],
+
+  [*Concerned With*],
+  [Activities, tasks, processes, and deliverables of the project.],
+  [Technical requirements, characteristics, and functionality of the final product.],
+
+  [*Measured By*],
+  [Success is measured by whether the project is completed on time and within budget.],
+  [Success is measured by whether the product meets user requirements and expectations.],
+
+  [*Example*], [Constructing a bridge.], [Technical specifications of a bridge such as length, width, etc.],
 )
 
-== Integrated Change Control 
+== Integrated Change Control
 
 Integrated Change Control is the process of reviewing, approving, and managing all changes in a project. It checks how a change will affect scope, time, cost, quality, resources, and risks before making the change. Its main goal is to keep the project on track while allowing necessary changes.
 
@@ -270,7 +281,7 @@ WBS is a way to break a project into smaller and manageable tasks in a hierarchi
 + *Phase-based Approach:* Divides the WBS according to project life cycle phases (e.g., Requirement Analysis #sym.arrow Design #sym.arrow Development #sym.arrow Testing #sym.arrow Deployment).
 + *Organization-based Approach:* Breaks down work according to organizational departments or teams (e.g., Software Team, Hardware Team, Marketing Team).
 
-== Responsibility Assignment Matrix (RAM) 
+== Responsibility Assignment Matrix (RAM)
 
 Also called the *RACI Matrix*, it shows who is responsible for each task in a project:
 - *R (Responsible):* Person who actually performs the task.
@@ -280,7 +291,7 @@ Also called the *RACI Matrix*, it shows who is responsible for each task in a pr
 
 RAM connects WBS tasks with people or teams, making roles and responsibilities clear.
 
-== Defining Project Scope: Step-by-Step 
+== Defining Project Scope: Step-by-Step
 
 As a project progresses, scope is refined from high-level summaries down to detailed work definitions through these steps:
 
@@ -304,3 +315,4 @@ Project success is measured by checking whether the project:
 Expert Judgment is a technique of using the knowledge and experience of experts to make decisions and solve project-related problems (e.g., consulting experienced project managers, taking advice from technical experts, or getting guidance from specialists).
 
 *Importance:* Helps in better decision-making, reduces risks and mistakes, and provides practical, reliable solutions.
+
