@@ -92,10 +92,13 @@ $ h_d [n] = cases(
 
 *Step 1:*
 $ delta_s = 10^(-0.05 alpha_s) $
-$ delta_p = frac(10^(-0.05 alpha_p) - 1, 10^(-0.05 alpha_p) + 1) $
+$ delta_p = frac(10^(0.05 alpha_p) - 1, 10^(0.05 alpha_p) + 1) $
+$ delta = min(delta_s, delta_p) $
 
 *Step 2:*
 $ alpha = -20 log(delta) $
+
+
 
 *Step 3:*
 $ beta = cases( 
