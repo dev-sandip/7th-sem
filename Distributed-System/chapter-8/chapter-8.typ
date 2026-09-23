@@ -138,9 +138,9 @@ conflicting with other transactions.
 + Increase the complexity of transaction management.
 + Can reduce system performance when many transactions are waiting.
 
-== Timestamp Ordering
+=== Timestamp Ordering
 _Timestamp Ordering_ is a concurrency control technique that assigns a unique timestamp to each transaction when it starts. The timestamps are used to determine the order of transactions and ensure that they are executed in a serializable manner. The basic idea is to maintain a global order of transactions based on their timestamps, and to enforce this order during the execution of transactions. This helps prevent conflicts and ensures that the final state of the system is consistent with the order of transactions.
-=== Basic Rules of Timestamp Ordering
+==== Basic Rules of Timestamp Ordering
 + Each transaction is assigned a unique timestamp when it starts.
 + Transactions are executed in the order of their timestamps, with earlier transactions being executed before later ones.
 + If a transaction requests to read or write a data item, the system checks the timestamps of the transaction and the data item to determine if the operation can be performed without violating the timestamp order.
@@ -148,7 +148,15 @@ _Timestamp Ordering_ is a concurrency control technique that assigns a unique ti
 + If a transaction requests to write a data item that has been read or written by an earlier transaction, the write operation is rejected, and the transaction may be aborted or rolled back.
 + The system maintains a log of all transactions and their timestamps to ensure that the order of execution is preserved and that the final state of the system is consistent with the order of transactions.
 
+=== Optimistic Concurrency Control
 
+_Optimistic Concurrency Control (OCC)_ is a concurrency control technique that assumes conflicts between transactions are rare and allows transactions to execute without acquiring locks. Instead, transactions execute in three distinct phases:
+
+- *Read Phase:* Transactions read data and perform local operations without acquiring any locks.
+- *Validation Phase:* The system checks for conflicts with other transactions and ensures serializability. If a conflict is detected, the transaction may be aborted or rolled back.
+- *Write Phase:* The transaction writes its changes to the database, provided it successfully passes the validation phase.
+
+*Note:* OCC is particularly useful in environments with low data contention. By reducing the overhead of acquiring and releasing locks, it allows for significantly better performance and scalability.
 == Distributed Transaction
 A _distributed transaction_ is a transaction that involves multiple nodes or processes in a distributed system.
 It requires either all of the nodes  involved to commit the transaction or all of them to abort it, ensuring that the system remains in a consistent state. Distributed transactions are more complex than local transactions due to the challenges of coordinating multiple nodes and handling failures.
