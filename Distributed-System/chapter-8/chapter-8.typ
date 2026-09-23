@@ -164,9 +164,10 @@ The _two-phase commit protocol_ is a distributed algorithm used to ensure that a
 + *_Phase 1: Prepare Phase_*: In this phase, the coordinator node sends a prepare request to all participating nodes, asking them to prepare for the transaction. Each node responds with a _VOTE_ indicating whether it is ready to commit or abort the transaction. If all nodes _VOTE_ to commit, the coordinator proceeds to the next phase; otherwise, it aborts the transaction.
 + *_Phase 2: Commit Phase_*: In this phase, if all nodes voted to commit in the prepare phase, the coordinator sends a _COMMIT_ request to all participating nodes, instructing them to _COMMIT_ the transaction. If any node voted to abort in the prepare phase, the coordinator sends an _ABORT_ request to all participating nodes, instructing them to abort the transaction. This ensures that all nodes reach a consistent decision regarding the transaction, maintaining the integrity and consistency of the distributed system.
 #figure(
-  image("/assets/image-16.png"),
+  image("/assets/two-phase-commit.png"),
   caption: "Two Phase Commit Protocol"
 )
+
 === Three-Phase Commit Protocol
 
 The *Three-Phase Commit (3PC) protocol* is an improved version of the
@@ -190,7 +191,7 @@ when a failure occurs in a distributed transaction.
 *Main advantage:* It reduces the chance of the system getting stuck
 (blocked) when a node or coordinator fails.
 #figure(
-  image("/assets/image-17.png"),
+  image("/assets/three-phase-commit.png"),
   caption: "Three Phase Commit Protocol"
 )
 == The Lost Update Problem
