@@ -259,7 +259,7 @@ Common techniques include:
   This gives priority to older transactions and helps prevent
   deadlocks.
 
-+ *Wait-Wait Scheme*:
++ *Wait-Die Scheme*:
   A transaction simply waits if the required resource is being used by
   another transaction. A *timeout* can be used to abort a transaction
   that waits for too long.
