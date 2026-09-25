@@ -117,7 +117,7 @@ Therefore, only $P_3$ accesses the critical section during that turn.
 + A process may have to wait for the token to complete a full cycle.
 + Maintaining the logical ring can be difficult.
 
-+= Non-Token-Based Mutual Exclusion
+== Non-Token-Based Mutual Exclusion
 
 In a non-token-based algorithm, there is no special token.
 
@@ -132,13 +132,13 @@ Basic idea:
 + The process enters the critical section after receiving the required replies.
 + After leaving the critical section, deferred requests are replied to.
 
-== Centralized Mutual Exclusion Algorithm
+=== Centralized Mutual Exclusion Algorithm
 
 A centralized algorithm uses one process as a *coordinator*.
 
 The coordinator controls access to the critical section.
 
-=== Algorithm
+==== Algorithm
 
 + A process sends a request to the coordinator.
 + The coordinator places the request in a queue.
@@ -147,7 +147,7 @@ The coordinator controls access to the critical section.
 + After completing its work, it sends a release message to the coordinator.
 + The coordinator gives permission to the next waiting process.
 
-=== Example
+==== Example
 
 Suppose $P_1$, $P_2$, and $P_3$ use $P_1$ as coordinator.
 
@@ -165,7 +165,7 @@ If $P_2$ wants the critical section:
 + Requires fewer messages.
 + Easy to maintain ordering.
 
-=== Disadvantages
+==== Disadvantages
 
 + Coordinator is a single point of failure.
 + Coordinator can become a bottleneck.
