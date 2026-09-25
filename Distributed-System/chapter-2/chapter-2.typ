@@ -173,7 +173,7 @@ work without waiting immediately for the result.
 RMI allows an object in one process to invoke methods of an object in
 another process.
 
-#image("../../assets/image-1a.png", width: 90%)
+#image("../../assets/image-1a.png", width: 70%)
 
 === Working of RMI
 
@@ -573,8 +573,33 @@ Suppose the client wants the IP address of:
 + Local DNS returns the IP address to the client.
 + Client connects to the web server using that IP address.
 
+=== Zone Transfer in Master-Slave DNS
 
+In a *master-slave DNS* setup, the master server holds the original zone data, while slave servers hold copies of that data. When the zone data is updated on the master server, it notifies the slave servers to update their copies. This process is called *zone transfer*.
 
+==== Steps Involved in Zone Transfer
+
++ Master DNS stores the original zone data.
++ Slave DNS servers periodically check with the master for updates.
++ A change occurs in the master DNS, and its *SOA* serial number increases.
++ The slave compares its serial number with the master's.
++ If the master's serial number is higher, the slave requests a zone transfer.
++ Zone transfer occurs by two methods: *AXFR* (full transfer) or *IXFR* (incremental transfer).
++ AXFR transfers the entire zone data, while IXFR transfers only the changes since the last update.
++ The slave updates its zone data and serial number after receiving the transfer and becomes synchronized with the master.
+
+#v(1em)
+#block(
+  fill: luma(240),
+  inset: 10pt,
+  radius: 4pt,
+  [
+    *NOTE (Full Forms):*
+    - *AXFR:* Authoritative Zone Transfer
+    - *IXFR:* Incremental Zone Transfer
+    - *SOA:* Start of Authority
+  ]
+)
 == Naming in Distributed Systems
 
 Naming is necessary to uniquely identify and locate resources such as
