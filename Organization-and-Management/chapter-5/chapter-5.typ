@@ -20,6 +20,22 @@
   h(0.5em)
   content
 }
+#let pyq(content) = {
+  box(
+    fill: rgb("#b4aeae"),
+    radius: 4pt,
+    inset: (x: 6pt, y: 3pt),
+  )[
+    #text(
+      size: 8pt,
+      weight: "bold",
+      fill: rgb("#0b4a07"),
+    )[PYQ]
+  ]
+
+  h(0.5em)
+  content
+}
 
 = Management Information System (MIS)
 
@@ -38,6 +54,12 @@ MIS helps managers perform the main functions of management:
 - Coordinating
 - Controlling
 
+
+==  #pyq[Relationship Between Computer and MIS]
+
+- *Computer as the Core Tool:* The computer is the main technological tool of MIS used to collect, process, store, and retrieve data.
+- *Information Conversion:* MIS uses computers to convert raw data into useful information for managers and organizations.
+- *Speed and Accuracy:* Computers make MIS faster and more accurate by automating information processing and report generation.
 #v(1em)
 
 == Components of MIS
@@ -55,6 +77,37 @@ MIS consists of three main concepts:
 - *Information:* Data that has been processed and analyzed so that it becomes useful for decision-making.
 
 Thus, MIS helps convert raw data into useful information for managers.
+
+== Information Architecture (IA)
+ Information Architecture (IA) is the process of organizing, structuring, and labeling information so that users can easily find, understand, and use it.
+
+- *Example:* In an e-commerce website, products are organized into categories such as Electronics -> Mobiles -> Smartphones, making it easy for users to find products.
+
+
+#text(weight: "bold")[Main Points:]
+- Organizes information in a clear and logical structure.
+- Makes information easy to find and access.
+- Improves user experience and decision-making.
+=== Comparison of Data, Information, Knowledge and Wisdom
+=== Data
+- Data is a collection of raw facts and figures.
+- It has no clear meaning until it is processed.
+- *Example:* 50, 60, 70 are sales numbers.
+
+==== Information
+- Information is processed and organized data.
+- It gives meaning and context to data.
+- *Example:* Sales increased from 50 to 70 units.
+
+==== Knowledge
+- Knowledge is the understanding gained from information and experience.
+- It helps a person understand how and why something happens.
+- *Example:* Sales increased because of effective advertising.
+
+==== Wisdom
+- Wisdom is the ability to use knowledge and experience to make good decisions.
+- It helps in choosing the best action.
+- *Example:* The manager decides to increase advertising to improve sales further.
 
 #v(1em)
 
@@ -91,7 +144,36 @@ MIS is needed to provide correct and useful information to managers at the right
 - *Future prediction:* It helps managers understand trends and predict possible future situations.
 - *Coordination:* MIS helps different departments share information and work together effectively.
 - *Quick access to information:* Managers can get the required information quickly and easily.
+== #pyq[Value of MIS in Planning Process]
++ *Provides accurate information* -- MIS provides timely and accurate data needed for preparing plans.
++ *Helps in forecasting* -- It provides past and current data to predict future sales, demand, costs, and resources.
++ *Supports goal setting* -- Managers can use MIS information to set realistic goals and targets.
++ *Helps in resource planning* -- It helps determine the required money, manpower, materials, and machines.
++ *Helps compare alternatives* -- MIS provides information about different options so managers can select suitable plans.
++ *Improves decision-making* -- It gives relevant information that helps managers make better and faster planning decisions.
 
+MIS provides relevant and timely information to different functional areas of an organization to help managers perform their activities effectively.
+
+#pyq[Information Support for Functional Areas of Management]
++ *Marketing Management*
+  - Provides information about sales, customers, market trends, and competitors.
+  - Helps in pricing, promotion, sales forecasting, and marketing planning.
+
++ *Production/Operations Management*
+  - Provides information about production levels, inventory, raw materials, and machine usage.
+  - Helps in production planning, scheduling, and quality control.
+
++ *Financial Management*
+  - Provides information about income, expenses, cash flow, and financial performance.
+  - Helps in budgeting, investment, and financial planning.
+
++ *Human Resource Management*
+  - Provides information about employees, attendance, salaries, performance, and recruitment.
+  - Helps in manpower planning, training, and performance evaluation.
+
++ *Accounting Management*
+  - Provides information about transactions, costs, revenues, and profits/losses.
+  - Helps in preparing financial statements and controlling costs.
 == Types of Information System
 An information system is a collection of hardware, software, data, people and procedures that are designed to generate information that supports the day-to-day, short-range, and long-range activities of users in an organization. Information systems  generally are classified into four categories:
 
@@ -141,12 +223,51 @@ It can use information from inside and outside the organization.
 - *Processing:* Interactive analysis.
 - *Output:* Analysis to support decisions.
 - *Example:* A company may use a *DSS to compare the cost, profit, and risk of different business projects*.
+===  Database Information System (DIS)
+
+A *Database Information System* is a system that uses a *database to collect, store, organize, process, and retrieve data* to provide useful information to users.\
+
+Features:
++ It stores large amounts of data in a *centralized and organized database*.
++ It allows users to *add, update, delete, and retrieve* data easily.
++ It reduces *data redundancy and inconsistency*.
++ It provides *quick and accurate information* for decision-making.
++ It can generate *reports and useful information* from stored data.
+
+*Example: Student Management System*
+
++  Stores student details such as *name, roll number, marks, and attendance*.
++ Teachers can update marks and attendance.
++ The system can generate *student results and reports* from the database.
 
 ==== Sources of Data
 
 - *Internal data:* Sales, production, inventory, and financial data.
 - *External data:* Market prices, interest rates, population data, and other outside information.
+=== #pyq[Use of DSS by Production Manager in Addition to MIS]
 
+#v(1em)
+
+A Production Manager uses *DSS (Decision Support System)* along with *MIS (Management Information System)* to make better production decisions. 
+
+#v(0.5em)
+
++ *Production Planning* : DSS helps decide how much to produce and when to produce.
++ *Resource Allocation* : Helps allocate machines, workers, raw materials, and time efficiently.
++ *Demand Forecasting* : Analyzes demand data to estimate future production requirements.
++ *What-if Analysis* : Allows the manager to check situations such as "What happens if demand increases by 20%?"
++ *Scheduling* : Helps prepare the best production schedule based on available resources and deadlines.
++ *Cost and Profit Analysis* : Helps compare different production alternatives and select a suitable option to reduce cost and improve profit.
+
+#v(1em)
+#block(
+  fill: rgb("f0f4f8"),
+  inset: 10pt,
+  radius: 4pt,
+  width: 100%,
+)[
+  *In short:* MIS provides the required information, while DSS helps the production manager analyze alternatives and make decisions.
+]
 === Expert System
 
 An Expert System is a system that *uses the knowledge of experts to solve problems and give advice*.
@@ -210,6 +331,26 @@ The main ways to organize an information system are:
 
 
 
+
+=== #pyq()[Why Hierarchy of Information System is Necessary in an Organization?]
+
+
+
+The hierarchy of information systems is necessary because different levels of management need different types of information for their activities and decisions.
+
+
++ *Supports different management levels* -- Provides suitable information to operational, middle, and top-level managers.
++ *Improves decision-making* -- Operational systems support routine decisions, while higher-level systems support strategic decisions.
++ *Ensures proper information flow* -- Information can flow upward, downward, and across departments effectively.
++ *Supports planning and control* -- Managers can use information to plan activities, monitor performance, and control operations.
++ *Saves time and resources* -- Managers receive only the information relevant to their level and responsibilities.
+
+#v(0.5em)
+#text(weight: "bold")[Example:]
+- *Top level:* Strategic information -> long-term planning
+- *Middle level:* Tactical information -> departmental planning
+- *Operational level:* Detailed information -> daily operations
+
 == Difference Between Data, Information, Knowledge and Wisdom
 #table(
   columns: (auto, auto, auto),
@@ -255,7 +396,27 @@ MIS provides different types of information to managers at different levels of a
   - They need detailed and current information about day-to-day activities.
   - *Example:* A supervisor checks employee attendance and daily production reports.
 
-
+== Difference Between MIS and DSS
+#table(
+  columns: (1fr, 1fr),
+  fill: (col, row) => if row == 0 { rgb("e2e8f0") } else { none },
+  inset: 10pt,
+  stroke: 2pt + rgb("cbd5e1"),
+  
+  [*MIS (Management Information System)*], [*DSS (Decision Support System)*],
+  
+  [Provides information for management], [Helps managers make decisions],
+  
+  [Focuses on regular and structured information], [Focuses on the analysis of problems and alternatives],
+  
+  [Deals mainly with routine decisions], [Deals mainly with semi-structured and unstructured decisions],
+  
+  [Uses mainly current and past internal data], [Uses data, analytical models, forecasts, and assumptions],
+  
+  [Produces regular reports, summaries, and statements], [Produces what-if analysis, predictions, and recommendations],
+  
+  [Example: Monthly sales report], [Example: Deciding how much to produce if demand increases],
+)
 
 == Value of MIS in Planning Process
 

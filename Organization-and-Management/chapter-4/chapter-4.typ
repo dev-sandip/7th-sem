@@ -71,6 +71,14 @@ Case study follows a systematic process to understand a problem and find the bes
 
 + _*Prepare a Written Report:*_ Write the final findings, analysis, and selected solution in a clear and organized form.
 
+== Types of Case Studies
+
++ *Exploratory Case Study* : Used to explore and understand a new problem.
++ *Descriptive Case Study* : Describes a situation or event in detail.
++ *Explanatory Case Study* : Explains why and how something happens.
++ *Intrinsic Case Study* : Studies a specific case because it is important or interesting.
++ *Instrumental Case Study* : Uses one case to understand a bigger problem.
++ *Collective Case Study* : Studies two or more cases to understand a common problem.
 == Checklist for Selecting the Solution
 
 Before choosing the final solution, consider the following points:
