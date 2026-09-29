@@ -116,7 +116,21 @@ A good selection process ensures that a worker can perform the required work eff
 + *_Temperament and character:_* The behavior, attitude, nature, and character of the person.
 
 + *_Interest:_* The person's interest in a particular type of work and suitability for that occupation.
-
+=== Recruitment vs Hiring
+#table(
+  columns: (1fr, 1fr),
+  stroke: 0.5pt + rgb("#cbd5e0"),
+  fill: (col, row) => if row == 0 { rgb("#f7fafc") } else { none },
+  align: (col, row) => if row == 0 { center + horizon } else { left + horizon },
+  table.header(
+    [*Recruitment*], [*Hiring*]
+  ),
+  [It is the process of finding and attracting candidates.], [It is the process of selecting and appointing a candidate.],
+  [It creates a pool of applicants.], [It chooses one suitable applicant for the job.],
+  [It happens before hiring.], [It happens after recruitment and selection.],
+  [It includes advertising jobs, collecting applications, and finding candidates.], [It includes making the final decision and giving the job offer.],
+  [*Example:* Posting a job vacancy and receiving 100 applications.], [*Example:* Selecting one candidate from those 100 applicants and offering them the job.]
+)
 
 == Personnel Policy
 
@@ -134,6 +148,7 @@ Personnel policies usually contain the following information:
 + *_Workplace rules:_* Rules about working hours, attendance, dress code, employee behavior, and other workplace requirements.
 + *_Pay and benefits:_* Information about salary, wages, benefits, and other facilities provided to employees.
 + *_Supervision and discipline:_* Rules about supervision, employee discipline, and procedures for dealing with misconduct.
+
 
 === Safety and Legal Matters
 
@@ -251,6 +266,16 @@ Examples:
 + *_Individual Incentive Scheme:_* The incentive is based on the *individual employee's performance*.
 
 + *_Group Incentive Scheme:_* The incentive is based on the *collective performance of a group or team*.
+
+=== Importance of Incentives
++ *Increase productivity* : encourages employees to produce more.
++ *Motivate employees* : makes employees more willing to work hard.
++ *Improve performance* : encourages employees to achieve better results.
++ *Reduce absenteeism* : encourages employees to attend work regularly.
++ *Reduce employee turnover* : helps retain skilled employees.
++ *Improve job satisfaction* : employees feel valued and rewarded.
++ *Achieve organizational goals* : helps employees work toward company objectives.
++ *Encourage efficiency* : motivates employees to reduce waste of time and resources.
 
 == Job Analysis, Job Evaluation and Merit Rating
 

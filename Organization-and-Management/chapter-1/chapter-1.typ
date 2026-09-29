@@ -581,7 +581,28 @@ Originally developed by Frederick W. Taylor. Work is divided into functional dep
 
 A group of two or more individuals selected by higher management to deliberate, investigate, or advise on specific organizational issues. Committees can be temporary (ad hoc) or permanent (standing).
 
+=== Types of Committees
++ *Ad Hoc Committees:* 
+  - Created for a specific purpose or problem.
+  - Dissolved once the task is completed or the issue is resolved.
+  - Example : A committe formed to investigate a particular issue
++ *Standing Committees:* 
+  - Permanent committees established to handle regular and continuous activities.
+  - Example : Finance Committee, Audit Committee
++ *Joint Committees:* 
+  - Composed of members from two or more departments or organizations.
+  - Helps coordinate activities between them.
+  - Example : A committee containing members from HR and Finance departments
 
++ *Executive Committees:* 
+  - Has the authority to make decisions and take action.
+  - Responsible for implementing organizational policies.
+  - Example : A company's executive committee deciding on major business activities
+
++ *Advisory Committees:* 
+  - Provides advice and suggestions to managers.
+  - Usually does not have the power to make final decisions.
+  - Example : An expert committee advising a company's manager
 ==== Key Characteristics
 + Unites representatives from various departments to evaluate ideas and formulate policy.
 + May operate with advisory power only, or hold direct administrative authority depending on its mandate.
