@@ -19,21 +19,18 @@ In conclusion, IPV6 is a significant advancement over IPv4, addressing the limit
 
 == IPV6 Header Format
 #table(
-  columns: (1fr, 2fr, 5fr),
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr), // 8 columns of 4 bits each (total 32 bits)
   stroke: 0.5pt + luma(120),
-  fill: (x, y) => if y == 0 { rgb("e0e0e0") } else { none },
   align: center + horizon,
-  
-  [*Bits 0-3*], [*Bits 4-11*], [*Bits 12-31*],
-  
-  [Version], [Traffic Class], [Flow Label],
-  
-
-  [Payload Length], [Next Header], [Hop Limit],
-  
-  [#table.cell(colspan: 3)[Source IP Address (128 bits)]],
-  [#table.cell(colspan: 3)[Destination IP Address (128 bits)]],
-    [#table.cell(colspan: 3)[Payload (Variable Length)]]
+  table.cell(colspan: 2)[Version \ *4 bits*],
+  table.cell(colspan: 2)[Traffic Class \ *8 bits*],
+  table.cell(colspan: 4)[Flow Label \ *20 bits*],
+  table.cell(colspan: 4)[Payload Length \ *16 bits*],
+  table.cell(colspan: 2)[Next Header \ *8 bits*],
+  table.cell(colspan: 2)[Hop Limit \ *8 bits*],
+  table.cell(colspan: 8)[Source IP Address \ *128 bits*],
+  table.cell(colspan: 8)[Destination IP Address \ *128 bits*],
+  table.cell(colspan: 8)[Payload \ *Variable Length*],
 )
 #table(
   columns: (1.5fr, 3.5fr),
@@ -56,99 +53,49 @@ In conclusion, IPV6 is a significant advancement over IPv4, addressing the limit
 == Comparision of IPV4 and IPV6 Header Formats
 IPV6 Header Format:
 #table(
-  columns: (1fr, 2fr, 5fr),
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr), // 8 columns of 4 bits each (total 32 bits)
   stroke: 0.5pt + luma(120),
-  fill: (x, y) => if y == 0 { rgb("e0e0e0") } else { none },
   align: center + horizon,
-  
-  [*Bits 0-3*], [*Bits 4-11*], [*Bits 12-31*],
-  
-  [Version], [Traffic Class], [Flow Label],
-  
-
-  [Payload Length], [Next Header], [Hop Limit],
-  
-  [#table.cell(colspan: 3)[Source IP Address (128 bits)]],
-  [#table.cell(colspan: 3)[Destination IP Address (128 bits)]],
-    [#table.cell(colspan: 3)[Payload (Variable Length)]]
+  table.cell(colspan: 2)[Version \ *4 bits*],
+  table.cell(colspan: 2)[Traffic Class \ *8 bits*],
+  table.cell(colspan: 4)[Flow Label \ *20 bits*],
+  table.cell(colspan: 4)[Payload Length \ *16 bits*],
+  table.cell(colspan: 2)[Next Header \ *8 bits*],
+  table.cell(colspan: 2)[Hop Limit \ *8 bits*],
+  table.cell(colspan: 8)[Source IP Address \ *128 bits*],
+  table.cell(colspan: 8)[Destination IP Address \ *128 bits*],
+  table.cell(colspan: 8)[Payload \ *Variable Length*],
 )
 IPV4 Header Format:
 #table(
-  columns: (1fr, 1fr, 2fr, 4fr),
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr), 
   stroke: 0.5pt + luma(120),
-  fill: (x, y) => if y == 0 { rgb("e0e0e0") } else { none },
   align: center + horizon,
-  
-  // Row 0: Bit Ruler (4 columns total: 1 + 1 + 2 + 4 = 8 relative ratio units)
-  [*Bits 0-3*], [*Bits 4-7*], [*Bits 8-15*], [*Bits 16-31*],
-  
-  // Row 1
-  [Version], [IHL], [Type of Service], [Total Length],
-  
-  // Row 2: Fix applied (Flags = 1 col, Fragment Offset = 1 col with colspan: 2)
-  [Identification], [Flags], [#table.cell(colspan: 2)[Fragment Offset]],
-  
-  // Row 3
-  [TTL], [Protocol], [#table.cell(colspan: 2)[Header Checksum]],
-  
-  // Rows 4-6: Spanning across all 4 columns
-  [#table.cell(colspan: 4)[Source IP Address (32 bits)]],
-  [#table.cell(colspan: 4)[Destination IP Address (32 bits)]],
-  [#table.cell(colspan: 4)[Options + Padding (Optional)]]
+  table.cell(colspan: 1)[Version \ *4 bits*],
+  table.cell(colspan: 1)[IHL \ *4 bits*],
+  table.cell(colspan: 2)[Type of Service \ *8 bits*],
+  table.cell(colspan: 4)[Total Length \ *16 bits*],
+  table.cell(colspan: 4)[Identification \ *16 bits*],
+  table.cell(colspan: 1)[Flags \ *3 bits*],
+  table.cell(colspan: 3)[Fragmentation Offset \ *13 bits*],
+  table.cell(colspan: 2)[TTL \ *8 bits*],
+  table.cell(colspan: 2)[Protocol \ *8 bits*],
+  table.cell(colspan: 4)[Header Checksum \ *16 bits*],
+  table.cell(colspan: 8)[Source IP Address \ *32 bits*],
+  table.cell(colspan: 8)[Destination IP Address \ *32 bits*],
+  table.cell(colspan: 8)[Options + Padding \ *Variable*],
 )
-#table(
-  columns: (2fr, 2.5fr, 2.5fr, 3fr),
-  stroke: 0.5pt + luma(180),
-  fill: (x, y) => if y == 0 { rgb("eef2f7") } else { none },
-  align: top + left,
-
-  [*Feature*], [*IPv4 Header*], [*IPv6 Header*], [*Key Difference*],
-
-  [*Header Size*],
-  [Variable: 20 to 60 bytes (depends on Options)],
-  [Fixed: 40 bytes],
-  [IPv6 has a predictable header size, speeding up router processing.],
-
-  [*Address Size*],
-  [32 bits (4 bytes)],
-  [128 bits (16 bytes)],
-  [IPv6 addresses are 4x larger in bit-width.],
-
-  [*Traffic Priority*],
-  [Type of Service (ToS) / DSCP],
-  [Traffic Class],
-  [Renamed function for Quality of Service (QoS).],
-
-  [*Flow Control*],
-  [None (handled higher in stack)],
-  [Flow Label (20 bits)],
-  [IPv6 natively tags packet streams for specialized routing.],
-
-  [*Packet Lifetime*],
-  [Time to Live (TTL)],
-  [Hop Limit],
-  [Renamed; both decrement by 1 per hop to prevent loops.],
-
-  [*Protocol Identification*],
-  [Protocol field],
-  [Next Header field],
-  [IPv6 uses Next Header to chain extension headers or TCP/UDP.],
-
-  [*Checksum*],
-  [Header Checksum (recomputed at every hop)],
-  [None (removed)],
-  [IPv6 relies on Layer 2 and Layer 4 checksums to increase routing speed.],
-
-  [*Fragmentation*],
-  [Handled by routers and hosts (Identification, Flags, Offset)],
-  [Handled *only* by the sending host (via Extension Headers)],
-  [Routers no longer fragment IPv6 packets, reducing router load.],
-
-  [*Options*],
-  [Included directly in the base header],
-  [Moved to optional Extension Headers],
-  [Keeps the base IPv6 header streamlined.]
-)
+- *Few Fields has been removed*:
+  + Identification , flag , fragment offset,
+  + TOS ,Header Length
+  + Header Checksum
+- *Some Fields has been added*:
+  + Flow Label
+  + Traffic Class
+- *Some Fields has been modified*:
+  + Total Length has been renamed to Payload Length
+  + Time to Live has been renamed to Hop Limit
+  + Protocol has been renamed to Next Header
 
 == Differences Between IPV4 and IPV6
 #table(
