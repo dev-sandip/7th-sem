@@ -29,6 +29,29 @@ The World Wide Web is a global framework of interlinked hypertext documents acce
   [Lower processing overhead (no encryption).], [Slight encryption/decryption CPU overhead.],
   [Suited for public, non-sensitive web pages.], [Standard for modern web, banking, and auth.]
 )
+== FTP Client Connection
+
+*FTP (File Transfer Protocol)* is used to transfer files between a client and a server.
+
+=== Working Process
+
++ *Connection:* The FTP client connects to the server using TCP port 21.
++ *Authentication:* The client sends its username and password to the server.
++ *Data Connection:* A separate connection is established for file and directory transfer.
++ *File Transfer:* The client can upload, download, rename, or delete files based on its permissions.
+
+==== Connection Flow
+
+#align(center)[
+  #block(
+    stroke: 0.5pt + luma(120),
+    inset: 10pt,
+    radius: 4pt,
+    [
+      Client #sym.arrow.r TCP Port 21 #sym.arrow.r Login #sym.arrow.r Data Connection #sym.arrow.r File Transfer
+    ]
+  )
+]
 
 == File Transfer Protocols
 
@@ -66,10 +89,55 @@ Email communication relies on a cooperative architecture composed of three prima
   [Uses Port 110 (plain) / Port 995 (SSL).], [Uses Port 143 (plain) / Port 993 (SSL).]
 )
 
+=== SMTP Working Principle
+
+*SMTP (Simple Mail Transfer Protocol)* is a protocol used to send and transfer emails from a sender to a mail server and between mail servers. 
+
+== Working Process
+
++ *Connection Establishment:* The sender's email client connects to the SMTP server using TCP.
++ *Authentication:* The sender is authenticated using their username and password.
++ *Mail Transfer:* The client sends the sender's email address, receiver's address, subject, and message to the SMTP server.
++ *Recipient Lookup:* The SMTP server identifies the recipient's mail server using the DNS MX record.
++ *Message Delivery:* The sender's SMTP server connects to the recipient's SMTP server and transfers the email.
++ *Mail Storage:* The recipient's mail server stores the email in the recipient's mailbox, where it can be retrieved using protocols such as POP3 or IMAP.
+
+==== Email Flow
+
+#align(center)[
+  #block(
+    stroke: 0.5pt + luma(120),
+    inset: 10pt,
+    radius: 4pt,
+    [
+      Sender \
+      #sym.arrow.b \
+      Email Client \
+      #sym.arrow.b \
+      SMTP Server \
+      #sym.arrow.b \
+      DNS (MX Record) \
+      #sym.arrow.b \
+      Recipient SMTP Server \
+      #sym.arrow.b \
+      Recipient Mailbox
+    ]
+  )
+]
+==== How SMTP Transmits Images
+SMTP is a text-based protocol that originally supports *7-bit ASCII* characters, so it cannot directly transmit binary data such as images.
+To send images through email, *MIME* (Multipurpose Internet Mail Extensions) is used.
++ The image is converted from binary data into             ASCII-compatible text, usually using Base64 encoding.
++ The encoded image is attached to the email using MIME.
++ SMTP transfers this encoded data as text.
++ The receiving mail client uses MIME information to identify and decode the Base64 data back into the original image.
+
+(Same method as storing images in MongoDB using Base64 encoding.)
 == Domain Name System (DNS)
 
 DNS is a hierarchical and distributed database that translates human-readable domain names (such as `example.com`) into machine-routable numerical IP addresses.
 
+A* Resource Record (RR)* is a piece of information stored in a DNS database that maps a domain name to specific information.
 === Resolution Process (Step-by-Step)
 
 When a client requests a domain name, resolution follows a 6-step lookup chain:
@@ -96,7 +164,8 @@ The Domain Name Space is structured like an inverted tree:
 - *Top-Level Domains (TLDs)*: Divided into generic TLDs (`.com`, `.org`) and country-code TLDs (`.uk`, `.np`).
 - *Authoritative Name Servers*: Host specific zone records for second-level domain registrations.
 - *DNS Caching & Resolvers*: Temporary storage structures and query handlers that reduce query latency across the internet.
-
+=== DNS Delegation
+DNS delegation allows a parent domain to assign authority over a subdomain to another DNS server. This is achieved by creating NS (Name Server) records in the parent zone that point to the authoritative servers of the delegated subdomain. Delegation enables distributed management of domain namespaces, allowing organizations to control their own subdomains while maintaining global accessibility.
 ==== Explain iterative query for browsing www.youtube.com.
 
 When a user attempts to access `www.youtube.com`, the browser initiates an iterative DNS query to resolve the domain name into an IP address. The process unfolds as follows:
