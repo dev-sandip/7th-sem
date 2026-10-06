@@ -1,3 +1,5 @@
+#import "@preview/cetz:0.3.4"
+
 
 
 = Network Layer
@@ -11,6 +13,27 @@ The Network Layer is the third layer of the OSI model. Its main job is to delive
 - *Fragmentation and Reassembly:* Divides large packets when necessary and reassembles them at the destination.
 - *Congestion Control:* Helps manage excessive traffic in the network.
 - *Error Reporting:* ICMP provides error and diagnostic information.
+
+*Why a Switch is Preferred Over a Hub in a LAN?*
+
+#enum(
+  [
+    *Better Performance:* A switch sends data only to the intended device, while a hub broadcasts data to all devices.
+  ],
+  [
+    *Less Network Traffic:* Switches reduce unnecessary traffic because they forward frames only to the correct destination.
+  ],
+  [
+    *Fewer Collisions:* Each switch port provides a separate collision domain, reducing data collisions.
+  ],
+  [
+    *Better Security:* Data is not normally sent to every connected device, making communication more private and secure than with a hub.
+  ],
+  [
+    *Full-Duplex Communication:* Switches support full-duplex communication, allowing devices to send and receive data simultaneously.
+  ],
+)
+
 
 == Routing
 Routing is the process of finding a path for packets from a source network to a destination network. A router examines the destination IP address and selects the best next hop.
@@ -172,6 +195,95 @@ Therefore, the shortest path is $A -> B -> C$ with cost $3$.
 + Mark the selected node as visited.
 + Repeat until all required nodes are visited.
 + Use the resulting shortest paths to create the routing table.
+
+Example: 
+
+#cetz.canvas({
+  import cetz.draw: *
+
+  // Nodes
+  circle((0, 0), radius: 0.25, fill: white)
+  content((0, 0), [R1])
+
+  circle((4, 0), radius: 0.25, fill: white)
+  content((4, 0), [R2])
+
+  circle((0, -3), radius: 0.25, fill: white)
+  content((0, -3), [R3])
+
+  circle((4, -3), radius: 0.25, fill: white)
+  content((4, -3), [R4])
+
+  // Links
+  line((0.25, 0), (3.75, 0))
+  line((0, -0.25), (0, -2.75))
+  line((4, -0.25), (4, -2.75))
+  line((0.25, -3), (3.75, -3))
+
+  // Costs
+  content((2, 0.3), [2])
+  content((-0.35, -1.5), [1])
+  content((4.35, -1.5), [2])
+  content((2, -3.3), [1])
+})
+Suppose we want to populate the routing table of R1.
+
+== Step-by-Step Population Process
+
++ *Each router discovers its neighbors:*
+  R1 learns:
+  - R1 $#sym.arrow$ R2 = cost 2
+  - R1 $#sym.arrow$ R3 = cost 1
+  *(Similarly, other routers advertise their links).*
+
++ *LSA is exchanged:*
+  Each router sends an LSA (Link-State Advertisement) containing information about its links. R1 eventually learns the complete topology:
+  - R1-R2 = 2 | R1-R3 = 1 | R2-R4 = 2 | R3-R4 = 1
+
++ *Build Link-State Database (LSDB):*
+  R1 creates an LSDB containing the full network topology map.
+
++ *Run Dijkstra's Algorithm:*
+  R1 calculates the shortest paths:
+  - To R2 = 2
+  - To R3 = 1
+  - To R4 = R1 $#sym.arrow$ R3 $#sym.arrow$ R4 = 1 + 1 = 2
+
++ *Routing Table is Populated:*
+
+#v(0.5em)
+
+#align(center)[
+  #table(
+    columns: (1fr, 1fr, 1fr),
+    align: (center, center, center),
+    table.header([*Destination*], [*Next Hop*], [*Cost*]),
+    [R2], [R2], [2],
+    [R3], [R3], [1],
+    [R4], [R3], [2],
+  )
+]
+
+== Easy Flow to Remember
+
+#align(center)[
+  #block(
+    inset: 10pt,
+    align(center)[
+      Discover neighbors \
+      ↓ \
+      Exchange LSA \
+      ↓ \
+      Build LSDB \
+      ↓ \
+      Run Dijkstra \
+      ↓ \
+      Find shortest paths \
+      ↓ \
+      Populate Routing Table
+    ]
+  )
+]
 
 == Distance Vector vs Link State
 #table(
@@ -338,6 +450,20 @@ Subnetting divides one large network into smaller networks called subnets.
 Used by network devices to send error messages and diagnostic information.
 - *Error Messages:* Destination Unreachable, Time Exceeded, Redirect.
 - *Informational Messages:* Echo Request, Echo Reply (used by `ping`).
+=== Importance of ICMP
++ *Reports errors* when IP packets cannot be delivered.
++ *Helps in network troubleshooting* and finding connection problems.
++ *Provides diagnostic information* between network devices.
++ *Helps identify unreachable networks or hosts.*
++ *Works with IP* to provide information about packet delivery.
+
+=== Usage of ICMP
+
++ *Ping* : checks whether a host is reachable.
++ *Traceroute* : finds the path taken by packets.
++ *Destination Unreachable* : reports that a destination cannot be reached.
++ *Time Exceeded*  : reports when a packet's TTL becomes zero.
++ *Network error reporting* : informs the sender about problems during packet transmission.
 
 == TTL (Time To Live)
 A field in the IPv4 header used to prevent packets from circulating forever in routing loops. Each router decreases TTL by one. If TTL = 0, the packet is discarded and an ICMP Time Exceeded message is sent.
